@@ -1,2 +1,3 @@
-# matrix-benchmarking-plugins
-Workload plugins for the MatrixBenchmarking project
+# matrix-benchmarking-plugins: MPI Benchmarking
+
+Workload plugins for running MPI on OCP benchmarking
