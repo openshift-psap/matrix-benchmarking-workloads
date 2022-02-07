@@ -1,13 +1,13 @@
 import types
-
-import store
-import store.simple
-from store.simple import *
 import glob
 import json
 from collections import defaultdict
 
-def mlperf_rewrite_settings(params_dict):
+import matrix_benchmarking.store as store
+import matrix_benchmarking.store.simple as store_simple
+import matrix_benchmarking.cli_args as cli_args
+
+def _rewrite_settings(params_dict):
     params_dict.pop("opts", True)
     if params_dict["gpu_type"] == "full":
         params_dict["mig_strategy"] = "none"
@@ -22,10 +22,8 @@ def mlperf_rewrite_settings(params_dict):
 
     return params_dict
 
-store.custom_rewrite_settings = mlperf_rewrite_settings
 
-def mlperf_parse_prom_gpu_metrics(dirname, results):
-    return
+def _parse_prom_gpu_metrics(dirname, results):
     prom = results.prom = defaultdict(lambda: defaultdict(dict))
     for res_file in glob.glob(f"{dirname}/metrics/prom_*.json"):
         with open(res_file) as f:
@@ -48,7 +46,6 @@ def mlperf_parse_prom_gpu_metrics(dirname, results):
             values = [[ts, float(val)] for ts, val in result_per_gpu['values']]
 
             prom[metric][prom_group] = values
-            #print(metric, ":", len(values))
         pass
 
 
@@ -103,7 +100,8 @@ def _parse_pod_logs(dirname, results, pod_logs_f):
 
                 results.thresholds[gpu_name] = []
 
-def mlperf_parse_ssd_results(dirname, import_settings):
+
+def _parse_ssd_results(dirname, import_settings):
     results = types.SimpleNamespace()
     results.pod_names = set()
     results.thresholds = {}
@@ -128,20 +126,29 @@ def mlperf_parse_ssd_results(dirname, import_settings):
     return results
 
 
-def mlperf_parse_results(dirname, import_settings):
+def _parse_results(fn_add_to_matrix, dirname, import_settings):
     benchmark = import_settings.get("benchmark")
-    if benchmark == "ssd":
-        results = mlperf_parse_ssd_results(dirname, import_settings)
-    else:
+    if benchmark != "ssd":
         print(f"WARNING: benchmark '{benchmark}' not currently parsed. Skipping {dirname} ...")
-        results = None
+        return
+
+    results = _parse_ssd_results(dirname, import_settings)
 
     if results is None:
-        return [({}, {})]
+        return
 
-    if not store.benchmark_mode:
-        mlperf_parse_prom_gpu_metrics(dirname, results)
+    parse_metrics = False
+    parse_metrics |= "visualize" in cli_args.kwargs["execution_mode"]
+    parse_metrics |= "parse" in cli_args.kwargs["execution_mode"]
+    if parse_metrics:
+        _parse_prom_gpu_metrics(dirname, results)
 
-    return [({}, results)]
+    fn_add_to_matrix(results)
 
-store.simple.custom_parse_results = mlperf_parse_results
+
+def parse_data():
+    # delegate the parsing to the simple_store
+    store.register_custom_rewrite_settings(_rewrite_settings)
+    store_simple.register_custom_parse_results(_parse_results)
+
+    return store_simple.parse_data()
