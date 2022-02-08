@@ -1,0 +1,39 @@
+script_tpl: "exec/mpi-benchmark/run_benchmark.sh"
+remote_mode: false
+stop_on_error: true
+
+env:
+
+
+common_settings:
+  run: 1, 2, 3, 4, 5
+  cloud: aws
+  machine: c4.xlarge
+  network: SDN
+  env: prod
+
+expe_to_run:
+- p2p
+- collective
+- hello
+
+expe:
+  p2p:
+    __path_tpl: "{cloud}-{machine}/{operation}/run_{run}"
+
+    mode: p2p
+    operation: bandwidth, latency
+
+  collective:
+    __path_tpl: "{cloud}-{machine}/{operation}_{node_count}x/run_{run}"
+
+    mode: collective
+    operation: osu-allreduce, osu-alltoall
+    node_count: 2, 4, 8, 16, 24, 32, 48, 56, 64, 80, 96, 128, 160, 192
+
+  hello:
+    __path_tpl: "{cloud}-{machine}/{operation}_{node_count}x/run_{run}"
+
+    mode: hello
+    operation: hello
+    node_count: 2, 4, 8, 16, 24, 32, 48, 56, 64, 80, 96, 128, 160, 192
