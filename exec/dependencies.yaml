@@ -64,7 +64,7 @@ spec:
   install:
   - name: create_imagesteam
     type: shell
-    spec: oc apply -f src/workload//setup/001_imagestream.yaml
+    spec: oc apply -f workload/exec/setup/001_imagestream.yaml
 ---
 name: has_mpi_base_image
 spec:
@@ -81,7 +81,7 @@ spec:
     spec:
     - name: Set local imagebuild name
       set_fact:
-        buildconfig_file: src/workload/exec/setup/002_base_image.buildconfig.yaml
+        buildconfig_file: workload/exec/setup/002_base_image.buildconfig.yaml
         buildconfig_name: mpi-base-image
 
     - name: Delete the image helper builder manifest, if any
@@ -121,7 +121,7 @@ spec:
     spec:
     - name: Set local imagebuild name
       set_fact:
-        buildconfig_file: src/workload/exec/setup/003_osu-bench.buildconfig.yaml
+        buildconfig_file: workload/exec/setup/003_osu-bench.buildconfig.yaml
         buildconfig_name: mpi-osu-image
 
     - name: Delete the image helper builder manifest, if any
