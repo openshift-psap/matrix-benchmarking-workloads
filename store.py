@@ -1,11 +1,10 @@
 import types, datetime
 import yaml
 
-import store
-import store.simple
-from store.simple import *
+import matrix_benchmarking.store as store
+import matrix_benchmarking.store.simple as store_simple
 
-def sample_rewrite_settings(params_dict):
+def _sample_rewrite_settings(params_dict):
     # add a @ on top of parameter name 'run'
     # to treat it as multiple identical executions
 
@@ -29,7 +28,7 @@ def sample_rewrite_settings(params_dict):
 def __parse_date(dirname, settings):
     results = types.SimpleNamespace()
 
-    with open(f"{dirname}/date") as f:
+    with open(dirname / "date") as f:
         results.date_ts = int(f.readlines()[0])
 
     return results
@@ -37,7 +36,7 @@ def __parse_date(dirname, settings):
 def __parse_procs(dirname, settings):
     results = types.SimpleNamespace()
 
-    with open(f"{dirname}/procs") as f:
+    with open(dirname / "procs") as f:
         results.procs = int(f.readlines()[0])
 
     return results
@@ -45,13 +44,13 @@ def __parse_procs(dirname, settings):
 def __parse_memfree(dirname, settings):
     results = types.SimpleNamespace()
 
-    with open(f"{dirname}/memfree") as f:
+    with open(dirname / "memfree") as f:
         results.memfree = int(f.readlines()[0]) * 1000 # unit if kB
 
     return results
 
-def sample_parse_results(dirname, settings):
-    mode = settings.get("mode")
+def _sample_parse_results(fn_add_to_matrix, dirname, import_settings):
+    mode = import_settings.get("mode")
     if not mode:
         print(f"ERROR: failed to parse '{dirname}', 'mode' setting not defined.")
         return
@@ -67,7 +66,12 @@ def sample_parse_results(dirname, settings):
         print(f"ERROR: failed to parse '{dirname}', mode={mode} not recognized.")
         return
 
-    return [[{}, fct(dirname, settings)]]
+    results = fct(dirname, import_settings)
+    fn_add_to_matrix(results)
 
-store.custom_rewrite_settings = sample_rewrite_settings
-store.simple.custom_parse_results = sample_parse_results
+# delegate the parsing to the simple_store
+def parse_data(results_dirname):
+    store.register_custom_rewrite_settings(_sample_rewrite_settings)
+    store_simple.register_custom_parse_results(_sample_parse_results)
+
+    return store_simple.parse_data(results_dirname)
