@@ -27,8 +27,6 @@ class Plot():
     def do_plot(self, ordered_vars, params, param_lists, variables, cfg):
         fig = go.Figure()
 
-        variables.pop("node_count")
-
         if params["operation"] == "---":
             return {}, f"Please select only one benchmark type ({', '.join(variables['operation'])})"
 
@@ -43,21 +41,24 @@ class Plot():
         XYerr_pos = defaultdict(dict)
         XYerr_neg = defaultdict(dict)
 
+        if self.name == "Date":
+            y_key = lambda results: results.date_ts
+        elif self.name == "Procs":
+            y_key = lambda results: results.procs
+        elif self.name == "Memfree":
+            y_key = lambda results: results.memfree
+
+        x_key = lambda entry: int(entry.params.node_count)
+        variables.pop("node_count")
+
         is_gathered = False
         for entry in Matrix.all_records(params, param_lists):
             legend_name = " ".join([f"{key}={entry.params.__dict__[key]}" for key in variables])
 
-            if self.name == "Date":
-                key = lambda results: results.date_ts
-            elif self.name == "Procs":
-                key = lambda results: results.procs
-            elif self.name == "Memfree":
-                key = lambda results: results.memfree
-
             if entry.is_gathered:
                 is_gathered = True
 
-                y_values = [key(entry.results) for entry in entry.results]
+                y_values = [y_key(entry.results) for entry in entry.results]
 
                 y = stats.mean(y_values)
                 y_err = stats.stdev(y_values) if len(y_values) > 2 else 0
@@ -65,17 +66,15 @@ class Plot():
                 legend_name += " " + " ".join(entry.gathered_keys.keys()) + f" x{len(entry.results)}"
 
                 if self.name == "Date":
-                    XYerr_pos[legend_name][int(entry.params.node_count)] = y_err
-                    XYerr_neg[legend_name][int(entry.params.node_count)] = y_err
+                    XYerr_pos[legend_name][x_key(entry)] = y_err
+                    XYerr_neg[legend_name][x_key(entry)] = y_err
                 else:
-                    XYerr_pos[legend_name][int(entry.params.node_count)] = y + y_err
-                    XYerr_neg[legend_name][int(entry.params.node_count)] = y - y_err
+                    XYerr_pos[legend_name][x_key(entry)] = y + y_err
+                    XYerr_neg[legend_name][x_key(entry)] = y - y_err
             else:
                 y = key(entry.results)
 
-                gather_key_name = [k for k in entry.params.__dict__.keys() if k.startswith("@")][0]
-
-            XY[legend_name][int(entry.params.node_count)] = y
+            XY[legend_name][x_key(entry)] = y
 
         if self.name == "Date":
             y_max = datetime.datetime.now()
