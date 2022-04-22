@@ -66,21 +66,21 @@ class Plot():
     def do_hover(self, meta_value, variables, figure, data, click_info):
         return "nothing"
 
-    def do_plot(self, ordered_vars, params, param_lists, variables, cfg):
+    def do_plot(self, ordered_vars, settings, param_lists, variables, cfg):
         fig = go.Figure()
 
         XY = defaultdict(dict)
         XYerr_pos = defaultdict(dict)
         XYerr_neg = defaultdict(dict)
 
-        x_key = lambda entry: int(entry.params.num_gpu)
+        x_key = lambda entry: int(entry.settings.num_gpu)
 
         try: variables.pop("num_gpu")
         except: KeyError: ...
 
         is_gathered = False
-        for entry in common.Matrix.all_records(params, param_lists):
-            legend_name = " ".join([f"{key}={entry.params.__dict__[key]}" for key in variables])
+        for entry in common.Matrix.all_records(settings, param_lists):
+            legend_name = " ".join([f"{key}={entry.settings.__dict__[key]}" for key in variables])
 
             if entry.is_gathered:
                 is_gathered = True

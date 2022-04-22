@@ -8,14 +8,14 @@ import matrix_benchmarking.store.simple as store_simple
 import matrix_benchmarking.store.prom_db as store_prom_db
 import matrix_benchmarking.parsing.prom as parsing_prom
 
-def _rewrite_settings(params_dict):
+def _rewrite_settings(settings_dict):
     # no rewriting to do at the moment
-    params_dict.pop("expe")
-    if "num_pods" not in params_dict:
-        params_dict["num_pods"] = "1"
-    if "num_gpu_per_per_pod" not in params_dict:
-        params_dict["num_gpu_per_per_pod"] = "1"
-    return params_dict
+    settings_dict.pop("expe")
+    if "num_pods" not in settings_dict:
+        settings_dict["num_pods"] = "1"
+    if "num_gpu_per_per_pod" not in settings_dict:
+        settings_dict["num_gpu_per_per_pod"] = "1"
+    return settings_dict
 
 INTERESTING_METRICS = [
     "DCGM_FI_DEV_POWER_USAGE",
