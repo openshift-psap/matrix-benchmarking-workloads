@@ -1,0 +1,1 @@
+oc set image deploy/runai-prometheus-pushgateway pushgateway=quay.io/prometheus/pushgateway:v0.10.0 
