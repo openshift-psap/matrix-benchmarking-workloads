@@ -163,9 +163,7 @@ import matrix_benchmarking.exec.prom as prom
 BENCHMARK_NAME='runai'
 
 common.create_artifact_dir(BENCHMARK_NAME)
-prom_data = types.SimpleNamespace()
-prom_data.handler = prom.get_handler()
-common.finalize_prometheus(prom_data)
+common.finalize_prometheus()
 common.save_system_artifacts()
 "
 
