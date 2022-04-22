@@ -6,7 +6,7 @@ import io
 import matrix_benchmarking.store as store
 import matrix_benchmarking.store.simple as store_simple
 import matrix_benchmarking.store.prom_db as store_prom_db
-import matrix_benchmarking.plotting.prom.utils as plotting_prom_utils
+import matrix_benchmarking.parsing.prom as parsing_prom
 
 def _rewrite_settings(params_dict):
     # no rewriting to do at the moment
@@ -31,18 +31,11 @@ def _parse_results(fn_add_to_matrix, dirname, import_settings):
         store.simple.invalid_directory(dirname, import_settings, "invalid BS configuration")
         return
 
-    prometheus_tgz = dirname / "prometheus_db.tgz"
-    if not prometheus_tgz.exists():
-        store.simple.invalid_directory(dirname, import_settings, "Prometheus archive not available")
-        return
-
-    results.metrics = store_prom_db.extract_metrics(prometheus_tgz, INTERESTING_METRICS, dirname)
-
-    results.gpu_power_usage = sum(plotting_prom_utils.mean(results.metrics["DCGM_FI_DEV_POWER_USAGE"], "run-bert"))
-    results.gpu_compute_usage = sum(plotting_prom_utils.mean(results.metrics["DCGM_FI_DEV_GPU_UTIL"], "run-bert"))
-    results.gpu_memory_usage = sum(plotting_prom_utils.mean(results.metrics["DCGM_FI_DEV_FB_USED"], "run-bert"))
-    results.cpu_usage = sum(plotting_prom_utils.mean(results.metrics["pod:container_cpu_usage:sum"], "run-bert"))
-    results.network_usage = sum(plotting_prom_utils.last(results.metrics["container_network_transmit_bytes_total"], "run-bert"))
+    results.gpu_power_usage = sum(parsing_prom.mean(results.metrics["DCGM_FI_DEV_POWER_USAGE"], "run-bert"))
+    results.gpu_compute_usage = sum(parsing_prom.mean(results.metrics["DCGM_FI_DEV_GPU_UTIL"], "run-bert"))
+    results.gpu_memory_usage = sum(parsing_prom.mean(results.metrics["DCGM_FI_DEV_FB_USED"], "run-bert"))
+    results.cpu_usage = sum(parsing_prom.mean(results.metrics["pod:container_cpu_usage:sum"], "run-bert"))
+    results.network_usage = sum(parsing_prom.last(results.metrics["container_network_transmit_bytes_total"], "run-bert"))
 
     with open(list(dirname.glob("pod.*-launcher*.log"))[0]) as f:
         for line in f.readlines():
