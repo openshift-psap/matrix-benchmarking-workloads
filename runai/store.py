@@ -79,7 +79,18 @@ def __parse_runai_ssd(dirname, settings):
                 if line.startswith("Benchmark result:"):
                     results.inference_speed[fname].append(float(line.split()[-2])) # img/s
                 if line.startswith("Single GPU mixed precision training performance"):
+                    if line.strip()[-1] == ":":
+                        store.simple.invalid_directory(dirname, settings, "no training result", warn=True)
+                        return
+
                     results.training_speed[fname] = float(line.split()[-2]) # img/s
+
+    if int(settings["inference_count"]) != len(results.inference_speed):
+        store.simple.invalid_directory(dirname, settings, "no enough inference results", warn=True)
+        return
+    if int(settings["training_count"]) != len(results.training_speed):
+        store.simple.invalid_directory(dirname, settings, "no enough training result", warn=True)
+        return
 
     for fpath in glob.glob(f"{dirname}/pod_*.status.yaml"):
         fname = fpath.rpartition("/")[-1]
