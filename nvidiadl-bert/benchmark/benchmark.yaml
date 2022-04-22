@@ -41,8 +41,10 @@ expe:
     precision: fp16
     batch_size: 76
     extra:
+    - num_pods=1, num_gpu_per_per_pod=1, num_gpu=1
     - num_pods=1, num_gpu_per_per_pod=4, num_gpu=4
     - num_pods=1, num_gpu_per_per_pod=8, num_gpu=8
     #- num_pods=2, num_gpu_per_per_pod=2, num_gpu=4
     #- num_pods=2, num_gpu_per_per_pod=4, num_gpu=8
     #- num_pods=2, num_gpu_per_per_pod=8, num_gpu=16
+
