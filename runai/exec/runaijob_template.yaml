@@ -37,7 +37,7 @@ spec:
           cp -v "$SRC_CONFIG_DIR"/* /tmp/cfg
           sed -i 's|/data/coco2017_tfrecords|'$STORAGE_DIR'/coco2017_tfrecords|' /tmp/cfg/*
           sed -i 's|/checkpoints|'$STORAGE_DIR'/checkpoints|' /tmp/cfg/*
-
+          nvidia-smi -L
           if [[ "{{ mode }}" == "inference" ]]; then
             count=0
             SECONDS=0 # Bash special var
