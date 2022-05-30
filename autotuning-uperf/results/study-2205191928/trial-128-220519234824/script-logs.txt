@@ -1,0 +1,16 @@
+tuned.tuned.openshift.io/uperf created
+Waiting for profile applied...
+benchmark.ripsaw.cloudbulldozer.io/uperf-pod created
+Waiting for benchmark to finish... Status: 
+Waiting for benchmark to finish... Status: 
+Waiting for benchmark to finish... Status: 
+Waiting for benchmark to finish... Status: Running
+Waiting for benchmark to finish... Status: Running
+Waiting for benchmark to finish... Status: Running
+Waiting for benchmark to finish... Status: Running
+Waiting for benchmark to finish... Status: Running
+Waiting for benchmark to finish... Status: Running
+Waiting for benchmark to finish... Status: Running
+Waiting for benchmark to finish... Status: Running
+tuned.tuned.openshift.io "uperf" deleted
+benchmark.ripsaw.cloudbulldozer.io "uperf-pod" deleted
