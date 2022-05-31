@@ -35,32 +35,35 @@ class Plot():
         plot_title = None
         plot_legend = None
 
+        x_key = ordered_vars.pop()
+
         for entry in Matrix.all_records(settings, param_lists):
             if plot_title is None:
                 results = entry.results[0].results if entry.is_gathered else entry.results
-                print(entry)
                 plot_title = "uperf 95th percentile latency over 60s with varying kernel tunables."
-                plot_legend = "Trial Number", "Latency (95th percentile)"
+                plot_legend = x_key, "Latency (95th percentile)"
 
-            legend_name = " ".join([f"{key}={entry.settings.__dict__[key]}" for key in variables])
+            legend_name = " ".join([f"{key}={entry.settings.__dict__[key]}" for key in reversed(ordered_vars)])
 
             if entry.is_gathered:
                 gather_xy = defaultdict(list)
                 for _entry in entry.results:
-                    gather_xy[_entry.results.trial].append(_entry.results.latency)
+                    x = _entry.settings.__dict__[x_key]
+                    gather_xy[x].append(_entry.results.latency)
 
                 legend_name = entry.settings.study
                 for x, gather_y in gather_xy.items():
-                    if gather_y[0] is not None:
-                        XY[legend_name][x] = y = stats.mean(gather_y)
-                        err = stats.stdev(gather_y) if len(gather_y) > 2 else 0
-                        XYerr_pos[legend_name][x] = y + err
-                        XYerr_neg[legend_name][x] = y - err
+                    if gather_y[0] is None: continue
+
+                    XY[legend_name][x] = y = stats.mean(gather_y)
+                    err = stats.stdev(gather_y) if len(gather_y) > 2 else 0
+                    XYerr_pos[legend_name][x] = y + err
+                    XYerr_neg[legend_name][x] = y - err
             else:
                 gather_key_name = [k for k in entry.settings.__dict__.keys() if k.startswith("@")][0]
-
-                for x, y in entry.results.measures.items():
-                    XY[legend_name][x] = y
+                if entry.results.latency is None: continue
+                x = entry.settings.__dict__[x_key]
+                XY[legend_name][x] = entry.results.latency
 
         if not XY:
             print("Nothing to plot ...", settings)
@@ -68,7 +71,7 @@ class Plot():
 
         data = []
         y_max = 0
-        for legend_name in XY:
+        for legend_name in sorted(XY):
             x = list(sorted(XY[legend_name].keys()))
             y = list([XY[legend_name][_x] for _x in x])
             y_max = max(y + [y_max])
