@@ -24,18 +24,18 @@ class Plot():
     def do_hover(self, meta_value, variables, figure, data, click_info):
         return "nothing"
 
-    def do_plot(self, ordered_vars, params, param_lists, variables, cfg):
+    def do_plot(self, ordered_vars, settings, param_lists, variables, cfg):
         fig = go.Figure()
 
-        if params["operation"] == "---":
-            return {}, f"Please select only one benchmark type ({', '.join(variables['operation'])})"
+        if settings["operation"] == "---":
+            return {}, f"Please select only one benchmark operation ({', '.join(variables['operation'])})"
 
-        if self.name == "Date" and params["operation"] != "date-date":
+        if self.name == "Date" and settings["operation"] != "date-date":
             return {}, f"Only operation 'date-date' is compatible with this plot plotting."
-        elif self.name == "Memfree" and not params["operation"].startswith("memfree"):
-            return {}, f"Operation '{params['operation']}' is not compatible with Memfree plotting."
-        elif self.name == "Procs" and not params["operation"].startswith("procs"):
-            return {}, f"Operation '{params['operation']}' is not compatible with Procs plotting."
+        elif self.name == "Memfree" and not settings["operation"].startswith("memfree"):
+            return {}, f"Operation '{settings['operation']}' is not compatible with Memfree plotting."
+        elif self.name == "Procs" and not settings["operation"].startswith("procs"):
+            return {}, f"Operation '{settings['operation']}' is not compatible with Procs plotting."
 
         XY = defaultdict(dict)
         XYerr_pos = defaultdict(dict)
@@ -48,12 +48,12 @@ class Plot():
         elif self.name == "Memfree":
             y_key = lambda results: results.memfree
 
-        x_key = lambda entry: int(entry.params.node_count)
+        x_key = lambda entry: int(entry.settings.node_count)
         variables.pop("node_count")
 
         is_gathered = False
-        for entry in Matrix.all_records(params, param_lists):
-            legend_name = " ".join([f"{key}={entry.params.__dict__[key]}" for key in variables])
+        for entry in Matrix.all_records(settings, param_lists):
+            legend_name = " ".join([f"{key}={entry.settings.__dict__[key]}" for key in variables])
 
             if entry.is_gathered:
                 is_gathered = True

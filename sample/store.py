@@ -4,7 +4,7 @@ import yaml
 import matrix_benchmarking.store as store
 import matrix_benchmarking.store.simple as store_simple
 
-def _sample_rewrite_settings(params_dict):
+def _rewrite_settings(params_dict):
     # add a @ on top of parameter name 'run'
     # to treat it as multiple identical executions
 
@@ -49,7 +49,7 @@ def __parse_memfree(dirname, settings):
 
     return results
 
-def _sample_parse_results(fn_add_to_matrix, dirname, import_settings):
+def _parse_directory(fn_add_to_matrix, dirname, import_settings):
     mode = import_settings.get("mode")
     if not mode:
         print(f"ERROR: failed to parse '{dirname}', 'mode' setting not defined.")
@@ -69,9 +69,9 @@ def _sample_parse_results(fn_add_to_matrix, dirname, import_settings):
     results = fct(dirname, import_settings)
     fn_add_to_matrix(results)
 
-# delegate the parsing to the simple_store
-def parse_data(results_dirname):
-    store.register_custom_rewrite_settings(_sample_rewrite_settings)
-    store_simple.register_custom_parse_results(_sample_parse_results)
+def parse_data():
+    # delegate the parsing to the simple_store
+    store.register_custom_rewrite_settings(_rewrite_settings)
+    store_simple.register_custom_parse_results(_parse_directory)
 
-    return store_simple.parse_data(results_dirname)
+    return store_simple.parse_data()
