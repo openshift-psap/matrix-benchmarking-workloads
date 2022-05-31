@@ -23,7 +23,7 @@ class Plot():
     def do_hover(self, meta_value, variables, figure, data, click_info):
         return "nothing"
 
-    def do_plot(self, ordered_vars, params, param_lists, variables, cfg):
+    def do_plot(self, ordered_vars, settings, param_lists, variables, cfg):
         fig = go.Figure()
         cfg__remove_details = cfg.get('perf.rm_details', False)
         cfg__legend_pos = cfg.get('perf.legend_pos', False)
@@ -35,21 +35,21 @@ class Plot():
         plot_title = None
         plot_legend = None
 
-        for entry in Matrix.all_records(params, param_lists):
+        for entry in Matrix.all_records(settings, param_lists):
             if plot_title is None:
                 results = entry.results[0].results if entry.is_gathered else entry.results
                 print(entry)
                 plot_title = "uperf 95th percentile latency over 60s with varying kernel tunables."
                 plot_legend = "Trial Number", "Latency (95th percentile)"
 
-            legend_name = " ".join([f"{key}={entry.params.__dict__[key]}" for key in variables])
+            legend_name = " ".join([f"{key}={entry.settings.__dict__[key]}" for key in variables])
 
             if entry.is_gathered:
                 gather_xy = defaultdict(list)
                 for _entry in entry.results:
                     gather_xy[_entry.results.trial].append(_entry.results.latency)
-                        
-                legend_name = entry.params.study
+
+                legend_name = entry.settings.study
                 for x, gather_y in gather_xy.items():
                     if gather_y[0] is not None:
                         XY[legend_name][x] = y = stats.mean(gather_y)
@@ -57,13 +57,13 @@ class Plot():
                         XYerr_pos[legend_name][x] = y + err
                         XYerr_neg[legend_name][x] = y - err
             else:
-                gather_key_name = [k for k in entry.params.__dict__.keys() if k.startswith("@")][0]
+                gather_key_name = [k for k in entry.settings.__dict__.keys() if k.startswith("@")][0]
 
                 for x, y in entry.results.measures.items():
                     XY[legend_name][x] = y
 
         if not XY:
-            print("Nothing to plot ...", params)
+            print("Nothing to plot ...", settings)
             return None, "Nothing to plot ..."
 
         data = []

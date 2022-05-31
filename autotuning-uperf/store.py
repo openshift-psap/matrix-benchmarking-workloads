@@ -5,6 +5,7 @@ import os, pathlib
 
 import matrix_benchmarking.store as store
 import matrix_benchmarking.common as common
+import matrix_benchmarking.cli_args as cli_args
 
 def _duplicated_entry(import_key, old_location, new_location):
     pass
@@ -13,10 +14,10 @@ def _parse_trial(dir_name, trial_name):
     study_name = dir_name.split("/")[-1]
     trial_num = trial_name.split("-")[1]
     print("Parsing trial: {} in study: {}".format(trial_num, study_name))
-    
+
     #TODO fil tuning_dict with all tuning params
     result_file=pathlib.Path(dir_name) / trial_name / "result.csv"
-    
+
     # In each trial, we repeat the run n times, and put the results of all runs in a result.csv. Each run will be registered to matrix benchmarking separately:
     results_list=[]
     # Some results may be pruned or incomplete. For now call result 0
@@ -60,14 +61,16 @@ def _parse_trial(dir_name, trial_name):
         store.add_to_matrix(entry_import_settings, study_name, results, _duplicated_entry)
 
 
-def parse_data(results_dir):
+def parse_data():
     store.register_custom_rewrite_settings(lambda x : x)
+
+    results_dir = pathlib.Path(".") / cli_args.kwargs["results_dirname"]
 
     for study in os.listdir(results_dir):
         # Going through each autotuning "study" which is a set of experiments with different tunables, converging on an optimum
         if os.path.isfile(study) or not study.startswith("study-"):
             continue
-        
+
         print("Parsing study: {}".format(study))
         for trial in os.listdir(pathlib.Path(results_dir) / study):
             if os.path.isfile(trial) or not trial.startswith("trial-"):
