@@ -1,0 +1,10 @@
+run=3
+machine=c4.xlarge
+type=benchmark
+cloud=aws
+network=SDN
+env=prod
+mode=procs
+operation=latency
+node_count=4
+

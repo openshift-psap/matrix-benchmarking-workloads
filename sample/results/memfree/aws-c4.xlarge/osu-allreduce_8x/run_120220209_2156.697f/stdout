@@ -1,0 +1,17 @@
+Running non-interactively.
+Using the current directory to store the test artifacts (/home/kevin/openshift/matrix-benchmarking/results/sample/memfree/aws-c4.xlarge/osu-allreduce_8x/run_120220209_2156.697f).
+run ==> 1
+machine ==> c4.xlarge
+type ==> benchmark
+cloud ==> aws
+network ==> SDN
+env ==> prod
+mode ==> memfree
+operation ==> osu-allreduce
+node_count ==> 8
+expe ==> memfree
+
+Running in mode 'memfree/operation': run=1 machine=c4.xlarge type=benchmark cloud=aws network=SDN env=prod mode=memfree operation=osu-allreduce node_count=8 expe=memfree
+
+Saving the free memory ...
+Done

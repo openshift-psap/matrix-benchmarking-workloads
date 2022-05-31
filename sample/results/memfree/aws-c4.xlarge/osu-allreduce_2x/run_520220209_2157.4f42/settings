@@ -1,0 +1,10 @@
+run=5
+machine=c4.xlarge
+type=benchmark
+cloud=aws
+network=SDN
+env=prod
+mode=memfree
+operation=osu-allreduce
+node_count=2
+
