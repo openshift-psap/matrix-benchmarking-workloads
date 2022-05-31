@@ -56,8 +56,8 @@ def _parse_trial(dir_name, trial_name):
             "@repeat": i,
         }
         entry_import_settings.update(tuned_dict)
-        print("entry_import_settings: {}".format(entry_import_settings))
-        print("results: {}".format(str(results)))
+        #print("entry_import_settings: {}".format(entry_import_settings))
+        #print("results: {}".format(str(results)))
         store.add_to_matrix(entry_import_settings, study_name, results, _duplicated_entry)
 
 
