@@ -23,7 +23,7 @@ class Plot():
     def do_hover(self, meta_value, variables, figure, data, click_info):
         return "nothing"
 
-    def do_plot(self, ordered_vars, params, param_lists, variables, cfg):
+    def do_plot(self, ordered_vars, settings, param_lists, variables, cfg):
         fig = go.Figure()
 
         first = True
@@ -31,27 +31,27 @@ class Plot():
         scale = "N/A"
         lower_better = None
         system_XY = defaultdict(dict)
-        system_highlight = params["system"]
+        system_highlight = settings["system"]
         single_argument = "argument" not in variables
 
-        if params["benchmark"] == "---":
+        if settings["benchmark"] == "---":
             return {}, f"Please select only one benchmark"
 
 
         if system_highlight:
-            syst_params = []
+            syst_settings = []
 
             for syst in Matrix.settings["system"]:
-                syst_params.append(["system", syst])
+                syst_settings.append(["system", syst])
 
-            param_lists.append(syst_params)
+            param_lists.append(syst_settings)
 
 
-        for entry in Matrix.all_records(params, param_lists):
-            key = entry.params.system if single_argument else entry.results.Arguments
+        for entry in Matrix.all_records(settings, param_lists):
+            key = entry.settings.system if single_argument else entry.results.Arguments
             if key == "N/A": key = ""
 
-            system_XY[entry.params.system][key] = entry.results.Data_Value
+            system_XY[entry.settings.system][key] = entry.results.Data_Value
             if first:
                 title = entry.results.Description
                 scale = entry.results.Scale
@@ -82,8 +82,8 @@ class Plot():
 
         fig = go.Figure(data=data)
 
-        if single_argument and params['argument'] != "N/A":
-            title += f"<br>{params['argument']}"
+        if single_argument and settings['argument'] != "N/A":
+            title += f"<br>{settings['argument']}"
         if system_highlight != "---" and not single_argument:
             title += f"<br>system: {system_highlight}"
 

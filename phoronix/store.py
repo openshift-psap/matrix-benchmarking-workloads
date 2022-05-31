@@ -2,11 +2,11 @@ import types, datetime
 import yaml
 import os, pathlib
 
+import xml.etree.ElementTree as ET
+
 import matrix_benchmarking.store as store
 import matrix_benchmarking.common as common
-
-
-import xml.etree.ElementTree as ET
+import matrix_benchmarking.cli_args as cli_args
 
 def _parse_generated(dirname, fname, elt):
     for key in "Title", "TestClient", "Description":
@@ -82,13 +82,15 @@ PARSERS = {
     "Result": _parse_result
 }
 
-def parse_data(results_dir):
+def parse_data():
     store.register_custom_rewrite_settings(lambda x : x)
 
+    results_dir = pathlib.Path(".") / cli_args.kwargs["results_dirname"]
     path = os.walk(results_dir)
 
     for this_dir, directories, files in path:
-        dirname = this_dir.replace(results_dir, "").strip("/")
+
+        dirname = this_dir.replace(str(results_dir), "").strip("/")
         dirname = dirname.replace("single-threaded", "").strip("-/")
         if "psap"  in dirname or "gce" in dirname: continue
         for fname in files:
