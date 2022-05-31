@@ -7,10 +7,17 @@ import plotly.graph_objs as go
 
 import matrix_benchmarking.plotting.table_stats as table_stats
 from matrix_benchmarking.common import Matrix
-from matrix_benchmarking.plotting.ui import COLORS
+from matrix_benchmarking.plotting import COLORS
 
 def register():
     Plot("Plot")
+
+    table_stats.TableStats.ValueDev(
+        "latency", "Latency",
+        lambda entry: entry.results.latency,
+        ".2f", "us (?)",
+        higher_better=False,
+    )
 
 class Plot():
     def __init__(self, name):
