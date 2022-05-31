@@ -1,0 +1,10 @@
+run=2
+machine=c4.xlarge
+type=benchmark
+cloud=aws
+network=SDN
+env=prod
+mode=procs
+operation=bandwidth
+node_count=16
+

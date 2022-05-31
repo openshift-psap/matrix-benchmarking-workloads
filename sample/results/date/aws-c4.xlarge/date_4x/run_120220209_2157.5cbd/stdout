@@ -1,0 +1,17 @@
+Running non-interactively.
+Using the current directory to store the test artifacts (/home/kevin/openshift/matrix-benchmarking/results/sample/date/aws-c4.xlarge/date_4x/run_120220209_2157.5cbd).
+run ==> 1
+machine ==> c4.xlarge
+type ==> benchmark
+cloud ==> aws
+network ==> SDN
+env ==> prod
+mode ==> date
+operation ==> date
+node_count ==> 4
+expe ==> date
+
+Running in mode 'date/operation': run=1 machine=c4.xlarge type=benchmark cloud=aws network=SDN env=prod mode=date operation=date node_count=4 expe=date
+
+Saving the date ...
+Done

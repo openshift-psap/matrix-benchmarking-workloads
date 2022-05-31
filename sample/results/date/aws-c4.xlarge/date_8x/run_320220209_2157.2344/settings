@@ -1,0 +1,10 @@
+run=3
+machine=c4.xlarge
+type=benchmark
+cloud=aws
+network=SDN
+env=prod
+mode=date
+operation=date
+node_count=8
+

@@ -1,0 +1,17 @@
+Running non-interactively.
+Using the current directory to store the test artifacts (/home/kevin/openshift/matrix-benchmarking/results/sample/procs/aws-c4.xlarge/bandwidth/run_420220209_2156.68b7).
+run ==> 4
+machine ==> c4.xlarge
+type ==> benchmark
+cloud ==> aws
+network ==> SDN
+env ==> prod
+mode ==> procs
+operation ==> bandwidth
+node_count ==> 4
+expe ==> procs
+
+Running in mode 'procs/operation': run=4 machine=c4.xlarge type=benchmark cloud=aws network=SDN env=prod mode=procs operation=bandwidth node_count=4 expe=procs
+
+Saving the number of processes ...
+Done
