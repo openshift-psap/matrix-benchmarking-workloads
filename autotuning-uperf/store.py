@@ -49,7 +49,7 @@ def _parse_trial(dir_name, trial_name):
         #results.__dict__.update(tuned_dict)
         entry_import_settings = {
             "study": study_name,
-            "trial": int(trial_num),
+            #"trial": int(trial_num),
             "benchmark": "uperf",
             #"argument": tuning_dict,
             #"id": results.Identifier,
