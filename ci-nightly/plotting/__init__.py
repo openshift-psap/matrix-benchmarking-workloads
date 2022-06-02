@@ -1,19 +1,30 @@
 from collections import defaultdict
 from datetime import datetime
+import statistics as stats
 
 import plotly.graph_objs as go
 
-from matrix_view.table_stats import TableStats
-import matrix_view
-from common import Matrix
-
+import matrix_benchmarking.plotting.table_stats as table_stats
+from matrix_benchmarking.common import Matrix
 
 def register():
-    TableStats.ValueDev("speed", "Simulation speed", "speed", ".2f", "ns/day", higher_better=False)
-    NightlyPlot(key="speed")
-    NightlyPlot(key="step_count")
-    NightlyPlot(key="ansible_tasks_ok")
-    NightlyPlot(key="test_passed")
+    table_stats.TableStats.ValueDev(
+        "rate", "Training rate",
+        lambda entry: entry.results.rate,
+        ".2f", "samples/sec",
+        higher_better=False,
+    )
+
+    table_stats.TableStats.ValueDev(
+        "duration", "Training duration",
+        lambda entry: entry.results.duration,
+        ".0f", "min",
+        higher_better=False,
+    )
+
+    NightlyPlot(key="rate")
+    NightlyPlot(key="duration")
+
 
 class NightlyPlot():
     def __init__(self, key):
@@ -22,7 +33,7 @@ class NightlyPlot():
 
         self.id_name = self.name.lower().replace(" ", "_")
 
-        matrix_view.table_stats.TableStats._register_stat(self)
+        table_stats.TableStats._register_stat(self)
         Matrix.settings["stats"].add(self.name)
 
     def do_hover(self, meta_value, variables, figure, data, click_info):
@@ -68,16 +79,36 @@ class NightlyPlot():
             dates = [dt_sp[0] for dt_sp in current_dates_values]
             values = [dt_sp[1] for dt_sp in current_dates_values]
 
-            trace = go.Scatter(x=dates, y=values,
-                               name=name,
-                               hoverlabel= {'namelength' :-1},
-                               showlegend=True,
-                               mode='markers+lines')
-            fig.add_trace(trace)
+            fig.add_trace(
+                go.Scatter(x=dates, y=values,
+                           name="Nighly processing rate",
+                           hoverlabel= {'namelength' :-1},
+                           showlegend=True,
+                           mode='markers+lines')
+            )
+
+            mean = stats.mean(values)
+            fig.add_trace(
+                go.Scatter(x=dates, y=[mean*0.95 for _ in values],
+                           name="Average * 95%",
+                           hoverlabel= {'namelength' :-1},
+                           showlegend=True,
+                           line_width=2,
+                           mode='lines')
+            )
+            fig.add_trace(
+                go.Scatter(x=dates, y=[mean*1.05 for _ in values],
+                           name="Average * 105%",
+                           hoverlabel= {'namelength' :-1},
+                           showlegend=True,
+                           line_width=2,
+                           mode='lines')
+            )
+
 
         fig.update_layout(
-            yaxis=dict(title=self.key,
+            yaxis=dict(title="",
                        range=[0, y_max*1.05],
                        ),
-            title=plot_title, title_x=0.5)
+            title="Processing rate (in img/sec, higher is better)", title_x=0.5)
         return fig, ""
