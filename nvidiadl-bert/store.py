@@ -15,6 +15,11 @@ def _rewrite_settings(settings_dict):
         settings_dict["num_pods"] = "1"
     if "num_gpu_per_per_pod" not in settings_dict:
         settings_dict["num_gpu_per_per_pod"] = "1"
+
+    #del settings_dict["batch_size"]
+    if settings_dict["mpi_mode"] == "reference":
+        return None
+    settings_dict.pop("num_pods")
     return settings_dict
 
 INTERESTING_METRICS = [
@@ -31,11 +36,11 @@ def _parse_results(fn_add_to_matrix, dirname, import_settings):
         store.simple.invalid_directory(dirname, import_settings, "invalid BS configuration")
         return
 
-    results.gpu_power_usage = sum(parsing_prom.mean(results.metrics["DCGM_FI_DEV_POWER_USAGE"], "run-bert"))
-    results.gpu_compute_usage = sum(parsing_prom.mean(results.metrics["DCGM_FI_DEV_GPU_UTIL"], "run-bert"))
-    results.gpu_memory_usage = sum(parsing_prom.mean(results.metrics["DCGM_FI_DEV_FB_USED"], "run-bert"))
-    results.cpu_usage = sum(parsing_prom.mean(results.metrics["pod:container_cpu_usage:sum"], "run-bert"))
-    results.network_usage = sum(parsing_prom.last(results.metrics["container_network_transmit_bytes_total"], "run-bert"))
+    #results.gpu_power_usage = sum(parsing_prom.mean(results.metrics["DCGM_FI_DEV_POWER_USAGE"], "run-bert"))
+    #results.gpu_compute_usage = sum(parsing_prom.mean(results.metrics["DCGM_FI_DEV_GPU_UTIL"], "run-bert"))
+    #results.gpu_memory_usage = sum(parsing_prom.mean(results.metrics["DCGM_FI_DEV_FB_USED"], "run-bert"))
+    #results.cpu_usage = sum(parsing_prom.mean(results.metrics["pod:container_cpu_usage:sum"], "run-bert"))
+    #results.network_usage = sum(parsing_prom.last(results.metrics["container_network_transmit_bytes_total"], "run-bert"))
 
     with open(list(dirname.glob("pod.*-launcher*.log"))[0]) as f:
         for line in f.readlines():
@@ -70,6 +75,15 @@ def _parse_results(fn_add_to_matrix, dirname, import_settings):
         return
 
     fn_add_to_matrix(results)
+    if import_settings["mpi_mode"] == "all_in_one_pod" and import_settings["num_gpu"] == "1":
+        for num_pods in 2, 4, 8:
+            settings = import_settings.copy()
+            settings["mpi_mode"] = "test-gpu-per-pod"
+            settings["num_gpu"] = "1"
+            settings["num_gpu_per_per_pod"] = str(int(16/num_pods))
+            settings["num_pods"] = "1"
+            fn_add_to_matrix(results, settings)
+    pass
 
 # https://github.com/NVIDIA/DeepLearningExamples/tree/master/TensorFlow2/LanguageModeling/BERT#fine-tuning-training-performance-for-squad-v11-on-nvidia-dgx-1-v100-8x-v100-16gb
 REFERENCE_VALUES = [
@@ -82,13 +96,12 @@ REFERENCE_VALUES = [
     dict(num_gpu="8", batch_size="3", precision="fp32", throughput=73.03),
 ]
 
-# delegate the parsing to the simple_store
 def parse_data():
+    # delegate the parsing to the simple_store
     store.register_custom_rewrite_settings(_rewrite_settings)
     store_simple.register_custom_parse_results(_parse_results)
 
     for _ref_value in REFERENCE_VALUES:
-        continue
         ref_values = _ref_value.copy()
 
         results = types.SimpleNamespace()

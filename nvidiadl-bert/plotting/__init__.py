@@ -6,17 +6,17 @@ import plotly.graph_objs as go
 
 import matrix_benchmarking.plotting.table_stats as table_stats
 import matrix_benchmarking.common as common
-import matrix_benchmarking.plotting.ui as ui
+import matrix_benchmarking.plotting as plotting
 import matrix_benchmarking.plotting.prom as prom
 
 
 def register():
     training_time = lambda results: results.training_time / 60 if results.training_time is not None else None
 
-    Plot("Throughput",
+    Plot("Average Throughput (in sentences/sec, higher is better)",
          None,
          lambda results: results.throughput,
-         "Average Throughput (in sentences/sec, higher is better)")
+         "")
     Plot("Throughput with overhead",
          None,
          lambda results: results.throughput_with_overhead,
@@ -47,9 +47,9 @@ def register():
          lambda results: results.network_usage,
          "Sum of the network transmit usage (in bytes, lower is better)")
 
-    prom.Plot("DCGM_FI_DEV_POWER_USAGE", "Power usage")
-    prom.Plot("DCGM_FI_DEV_FB_USED", "Memory usage")
-    prom.Plot("DCGM_FI_DEV_GPU_UTIL", "Compute usage")
+    prom.Plot("run-bert", "DCGM_FI_DEV_POWER_USAGE", "Power usage")
+    prom.Plot("run-bert", "DCGM_FI_DEV_FB_USED", "Memory usage")
+    prom.Plot("run-bert", "DCGM_FI_DEV_GPU_UTIL", "Compute usage")
 
 
 class Plot():
@@ -81,6 +81,7 @@ class Plot():
         is_gathered = False
         for entry in common.Matrix.all_records(settings, param_lists):
             legend_name = " ".join([f"{key}={entry.settings.__dict__[key]}" for key in variables])
+            #legend_name = " ".join([f"{entry.settings.__dict__[key]}" for key in variables])
 
             if entry.is_gathered:
                 is_gathered = True
@@ -112,12 +113,12 @@ class Plot():
 
             y_max = max([_y for _y in y if _y is not None] + [y_max])
 
-            color = ui.COLORS(list(XY.keys()).index(legend_name))
+            color = plotting.COLORS(list(XY.keys()).index(legend_name))
 
             data.append(go.Scatter(name=legend_name,
                                    x=x, y=y,
                                    mode="markers+lines",
-                                   line=dict(color=color, width=1),
+                                   line=dict(color=color, width=3),
                                    hoverlabel= {'namelength' :-1},
                                    legendgroup=legend_name,
                                    ))
@@ -159,7 +160,7 @@ class Plot():
 
         fig.update_layout(
             title=self.title, title_x=0.5,
-            showlegend=True,
+            showlegend=False,
             xaxis_title="Number of GPUs" + (" [log scale]" if log_scale else ""),
             yaxis_title=self.y_title + (" [log scale]" if log_scale else ""),
         )
