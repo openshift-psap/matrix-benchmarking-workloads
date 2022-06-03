@@ -1,8 +1,12 @@
-path_tpl: "{flavor}/gpu={gpu_type}_{gpu_count}gpu_x_{pod_count}pod/run_"
+--path_tpl: "{flavor}/gpu={gpu_type}_{gpu_count}gpu_x_{pod_count}pod/run_"
 
-script_tpl: "exec/mlperf/run_ssd.py"
-remote_mode: false
-stop_on_error: false
+--script_tpl: "exec/mlperf/run_ssd.py"
+--remote_mode: false
+--stop_on_error: false
+
+--expe_to_run:
+  - dgx-benchmark
+  - dgx-test
 
 common_settings:
   node_name: dgxa100
@@ -10,24 +14,7 @@ common_settings:
   benchmark: ssd
   cores: 8
 
-expe_to_run:
-#- dgx-benchmark
-- dgx-test
-#- dgx-try
-
 expe:
-  dgx-try:
-    run: 2
-    benchmark: maskrcnn
-    execution_mode: run
-    vendor: dell
-    extra:
-    - gpu_type=full, gpu_count=8, pod_count=1
-
-    - gpu_type=full, gpu_count=6, pod_count=1
-
-    - gpu_type=full, gpu_count=4, pod_count=1 # Record in progress error
-
   dgx-test:
     execution_mode: fast
     threshold: 0.1
