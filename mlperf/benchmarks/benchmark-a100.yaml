@@ -1,8 +1,8 @@
-path_tpl: "{benchmark}/gpu={gpu}/run{run}_"
+--path_tpl: "{benchmark}/gpu={gpu}/run{run}_"
 
-script_tpl: "exec/mlperf/run_{benchmark}.py"
-remote_mode: false
-stop_on_error: false
+--script_tpl: "exec/mlperf/run_{benchmark}.py"
+--remote_mode: false
+--stop_on_error: false
 
 run:
   - nva100
