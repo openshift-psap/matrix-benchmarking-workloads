@@ -1,0 +1,3080 @@
+UPERF-run-context num_node= 1 density= 1 my_node_idx= 0 my_pod_idx= 0
+<?xml version=1.0?>
+<profile name="rr-tcp-1024-1024-1">
+      <group nthreads="1">
+      <transaction iterations="1">
+        <flowop type="connect" options="remotehost=$h protocol=tcp port=30001"/>
+      </transaction>
+      <transaction duration="60">
+        <flowop type=write options="size=1024"/>
+        <flowop type=read  options="size=1024"/>
+      <transaction iterations="1">
+        <flowop type=disconnect />
+      </transaction>
+  </group>
+            </profile>
+2022-05-20T00:27:35Z - INFO     - MainProcess - run_snafu: logging level is DEBUG
+2022-05-20T00:27:35Z - INFO     - MainProcess - _load_benchmarks: Successfully imported 3 benchmark modules: coremarkpro, systemd_analyze, uperf
+2022-05-20T00:27:35Z - INFO     - MainProcess - _load_benchmarks: Failed to import 0 benchmark modules: 
+2022-05-20T00:27:35Z - INFO     - MainProcess - run_snafu: Not connected to Elasticsearch
+2022-05-20T00:27:35Z - DEBUG    - MainProcess - wrapper_factory: looking for uperf
+2022-05-20T00:27:35Z - INFO     - MainProcess - wrapper_factory: identified uperf as the benchmark wrapper
+2022-05-20T00:27:35Z - INFO     - MainProcess - _benchmark: Starting uperf wrapper.
+2022-05-20T00:27:35Z - INFO     - MainProcess - _benchmark: Running setup tasks.
+2022-05-20T00:27:35Z - DEBUG    - MainProcess - uperf: Got config: {'params': Namespace(archive_file=None, client_ips='10.131.1.221 11.10.1.201 ', client_node='worker001-740xd', cluster_name='test-cluster', colocate='', config=None, createarchive=False, density='1', density_range='', hostnetwork='False', kind='pod', labels={}, loglevel=10, message_size=None, multus_client='macvlan-range-0', networkpolicy='False', node_range='', nodes_in_iter='1', num_pairs='1', num_threads=1, port='30000', protocol='', read_message_size=None, remote_ip='11.10.1.241', run_id='NA', sample=1, server_node='unknown', service_ip='False', service_type='', step_size='', test_type='', tool='uperf', user='ripsaw', uuid='34bacf5a-af10-58df-923c-3a1593744552', workload='/tmp/uperf-test/uperf-rr-tcp-1024-1024-1', **{'pod-id': '0'}), 'parser': ArgumentParser(prog='run_snafu', usage=None, description='Run benchmark-wrapper and export results.', formatter_class=<class 'argparse.ArgumentDefaultsHelpFormatter'>, conflict_handler='resolve', add_help=False), 'group': <argparse._ArgumentGroup object at 0x7f034f82eac8>, 'env_to_params': {'clustername': 'cluster_name', 'test_user': 'user', 'uuid': 'uuid', 'WORKLOAD': 'workload', 'SAMPLE': 'sample', 'RESOURCETYPE': 'kind', 'ips': 'client_ips', 'h': 'remote_ip', 'hostnet': 'hostnetwork', 'serviceip': 'service_ip', 'servicetype': 'service_type', 'port': 'port', 'server_node': 'server_node', 'client_node': 'client_node', 'num_pairs': 'num_pairs', 'multus_client': 'multus_client', 'networkpolicy': 'networkpolicy', 'node_count': 'nodes_in_iter', 'pod_count': 'density', 'colocate': 'colocate', 'stepsize': 'step_size', 'test_type': 'test_type', 'proto': 'protocol', 'rsize': 'read_message_size', 'wsize': 'message_size', 'nthr': 'num_threads', 'density_range': 'density_range', 'node_range': 'node_range', 'my_pod_idx': 'pod-id'}}
+2022-05-20T00:27:35Z - INFO     - MainProcess - _benchmark: Collecting results from benchmark.
+2022-05-20T00:27:35Z - INFO     - MainProcess - uperf: Collecting 1 sample of Uperf
+2022-05-20T00:27:35Z - INFO     - MainProcess - process: Collecting 1 sample of command ['uperf', '-v', '-a', '-R', '-i', '1', '-m', '/tmp/uperf-test/uperf-rr-tcp-1024-1024-1', '-P', '30000']
+2022-05-20T00:27:35Z - DEBUG    - MainProcess - process: Starting sample 1
+2022-05-20T00:27:35Z - DEBUG    - MainProcess - process: Running command: ['uperf', '-v', '-a', '-R', '-i', '1', '-m', '/tmp/uperf-test/uperf-rr-tcp-1024-1024-1', '-P', '30000']
+2022-05-20T00:27:35Z - DEBUG    - MainProcess - process: Using args: {'env': {'uuid': '34bacf5a-af10-58df-923c-3a1593744552', 'clustername': 'test-cluster', 'h': '11.10.1.241', 'pod_count': '1', 'HOSTNAME': 'uperf-client-10.128.2.129-34bacf5a-44pw6', 'server_node': 'unknown', 'hostnet': 'False', 'num_pairs': '1', 'BENCHMARK_CONTROLLER_MANAGER_METRICS_SERVICE_PORT_8443_TCP_PROTO': 'tcp', 'BENCHMARK_CONTROLLER_MANAGER_METRICS_SERVICE_PORT_8443_TCP_ADDR': '172.30.83.1', 'KUBERNETES_PORT_443_TCP_PROTO': 'tcp', 'KUBERNETES_PORT_443_TCP_ADDR': '172.30.0.1', 'container': 'oci', 'BENCHMARK_CONTROLLER_MANAGER_METRICS_SERVICE_PORT': 'tcp://172.30.83.1:8443', 'KUBERNETES_PORT': 'tcp://172.30.0.1:443', 'my_node_idx': '0', 'PWD': '/', 'HOME': '/', 'test_user': 'ripsaw', 'networkpolicy': 'False', 'BENCHMARK_CONTROLLER_MANAGER_METRICS_SERVICE_SERVICE_PORT': '8443', 'BENCHMARK_CONTROLLER_MANAGER_METRICS_SERVICE_SERVICE_PORT_HTTPS': '8443', 'KUBERNETES_SERVICE_PORT_HTTPS': '443', 'KUBERNETES_PORT_443_TCP_PORT': '443', 'BENCHMARK_CONTROLLER_MANAGER_METRICS_SERVICE_SERVICE_HOST': '172.30.83.1', 'KUBERNETES_PORT_443_TCP': 'tcp://172.30.0.1:443', 'my_pod_idx': '0', 'TERM': 'xterm', 'NSS_SDB_USE_CACHE': 'no', 'SHLVL': '1', 'client_node': 'worker001-740xd', 'KUBERNETES_SERVICE_PORT': '443', 'node_count': '1', 'BENCHMARK_CONTROLLER_MANAGER_METRICS_SERVICE_PORT_8443_TCP': 'tcp://172.30.83.1:8443', 'ips': '10.131.1.221 11.10.1.201 ', 'multus_client': 'macvlan-range-0', 'PATH': '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'BENCHMARK_CONTROLLER_MANAGER_METRICS_SERVICE_PORT_8443_TCP_PORT': '8443', 'KUBERNETES_SERVICE_HOST': '172.30.0.1', '_': '/usr/local/bin/run_snafu', 'LC_CTYPE': 'C.UTF-8', 'WORKLOAD': '/tmp/uperf-test/uperf-rr-tcp-1024-1024-1', 'SAMPLE': '1', 'RESOURCETYPE': 'pod', 'serviceip': 'False', 'servicetype': '', 'port': '30000', 'colocate': '', 'stepsize': '', 'test_type': '', 'proto': '', 'rsize': 'None', 'wsize': 'None', 'nthr': '1', 'density_range': '', 'node_range': ''}}
+2022-05-20T00:27:35Z - DEBUG    - MainProcess - process: On try 1
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - process: Finished running. Got attempt: ProcessRun(rc=0, stdout='Error getting SSL CTX:1\nAllocating shared memory of size 156624 bytes\nCompleted handshake phase 1\nStarting handshake phase 2\nHandshake phase 2 with 11.10.1.241\n  Done preprocessing accepts\n  Sent handshake header\n  Sending workorder\n    Sent workorder\n    Sent transaction\n    Sent flowop\n    Sent transaction\n    Sent flowop\n    Sent flowop\n    Sent transaction\n    Sent flowop\nTX worklist success  Sent workorder\nHandshake phase 2 with 11.10.1.241 done\nCompleted handshake phase 2\nStarting 1 threads running profile:rr-tcp-1024-1024-1 ...   0.00 seconds\nTX command [UPERF_CMD_NEXT_TXN, 0] to 11.10.1.241\ntimestamp_ms:1653006456970.5242 name:Txn1 nr_bytes:0 nr_ops:0\ntimestamp_ms:1653006457971.6365 name:Txn1 nr_bytes:0 nr_ops:1\n\nTX command [UPERF_CMD_NEXT_TXN, 1] to 11.10.1.241\ntimestamp_ms:1653006457971.7278 name:Txn2 nr_bytes:0 nr_ops:0\ntimestamp_ms:1653006458972.8125 name:Txn2 nr_bytes:35003392 nr_ops:34183\ntimestamp_ms:1653006459973.5620 name:Txn2 nr_bytes:70376448 nr_ops:68727\ntimestamp_ms:1653006460974.6675 name:Txn2 nr_bytes:105452544 nr_ops:102981\ntimestamp_ms:1653006461975.7651 name:Txn2 nr_bytes:140819456 nr_ops:137519\ntimestamp_ms:1653006462976.8860 name:Txn2 nr_bytes:176185344 nr_ops:172056\ntimestamp_ms:1653006463977.9836 name:Txn2 nr_bytes:210744320 nr_ops:205805\ntimestamp_ms:1653006464979.0981 name:Txn2 nr_bytes:246121472 nr_ops:240353\ntimestamp_ms:1653006465980.1934 name:Txn2 nr_bytes:281521152 nr_ops:274923\ntimestamp_ms:1653006466981.2891 name:Txn2 nr_bytes:316843008 nr_ops:309417\ntimestamp_ms:1653006467982.3877 name:Txn2 nr_bytes:351904768 nr_ops:343657\ntimestamp_ms:1653006468983.4314 name:Txn2 nr_bytes:386964480 nr_ops:377895\ntimestamp_ms:1653006469984.4744 name:Txn2 nr_bytes:422079488 nr_ops:412187\ntimestamp_ms:1653006470985.5168 name:Txn2 nr_bytes:457434112 nr_ops:446713\ntimestamp_ms:1653006471986.5608 name:Txn2 nr_bytes:493741056 nr_ops:482169\ntimestamp_ms:1653006472987.5974 name:Txn2 nr_bytes:528970752 nr_ops:516573\ntimestamp_ms:1653006473988.6899 name:Txn2 nr_bytes:564245504 nr_ops:551021\ntimestamp_ms:1653006474988.8335 name:Txn2 nr_bytes:599528448 nr_ops:585477\ntimestamp_ms:1653006475989.8745 name:Txn2 nr_bytes:634670080 nr_ops:619795\ntimestamp_ms:1653006476990.8325 name:Txn2 nr_bytes:669600768 nr_ops:653907\ntimestamp_ms:1653006477991.8728 name:Txn2 nr_bytes:704732160 nr_ops:688215\ntimestamp_ms:1653006478992.9729 name:Txn2 nr_bytes:739979264 nr_ops:722636\ntimestamp_ms:1653006479993.8372 name:Txn2 nr_bytes:775695360 nr_ops:757515\ntimestamp_ms:1653006480994.9392 name:Txn2 nr_bytes:810957824 nr_ops:791951\ntimestamp_ms:1653006481996.0356 name:Txn2 nr_bytes:846087168 nr_ops:826257\ntimestamp_ms:1653006482997.1367 name:Txn2 nr_bytes:881548288 nr_ops:860887\ntimestamp_ms:1653006483998.1702 name:Txn2 nr_bytes:916847616 nr_ops:895359\ntimestamp_ms:1653006484999.2656 name:Txn2 nr_bytes:952218624 nr_ops:929901\ntimestamp_ms:1653006486000.3142 name:Txn2 nr_bytes:987524096 nr_ops:964379\ntimestamp_ms:1653006487000.8958 name:Txn2 nr_bytes:1022830592 nr_ops:998858\ntimestamp_ms:1653006488001.8970 name:Txn2 nr_bytes:1058028544 nr_ops:1033231\ntimestamp_ms:1653006489002.8999 name:Txn2 nr_bytes:1093389312 nr_ops:1067763\ntimestamp_ms:1653006490004.0032 name:Txn2 nr_bytes:1128631296 nr_ops:1102179\ntimestamp_ms:1653006491004.8318 name:Txn2 nr_bytes:1163740160 nr_ops:1136465\ntimestamp_ms:1653006492005.8318 name:Txn2 nr_bytes:1198932992 nr_ops:1170833\ntimestamp_ms:1653006493006.9255 name:Txn2 nr_bytes:1234369536 nr_ops:1205439\ntimestamp_ms:1653006494008.0142 name:Txn2 nr_bytes:1269517312 nr_ops:1239763\ntimestamp_ms:1653006495009.1973 name:Txn2 nr_bytes:1304501248 nr_ops:1273927\ntimestamp_ms:1653006496010.2563 name:Txn2 nr_bytes:1339544576 nr_ops:1308149\ntimestamp_ms:1653006497011.3586 name:Txn2 nr_bytes:1374798848 nr_ops:1342577\ntimestamp_ms:1653006498012.4607 name:Txn2 nr_bytes:1410073600 nr_ops:1377025\ntimestamp_ms:1653006499013.5540 name:Txn2 nr_bytes:1445518336 nr_ops:1411639\ntimestamp_ms:1653006500014.6433 name:Txn2 nr_bytes:1480774656 nr_ops:1446069\ntimestamp_ms:1653006501015.7861 name:Txn2 nr_bytes:1516153856 nr_ops:1480619\ntimestamp_ms:1653006502016.8887 name:Txn2 nr_bytes:1551550464 nr_ops:1515186\ntimestamp_ms:1653006503018.0032 name:Txn2 nr_bytes:1587024896 nr_ops:1549829\ntimestamp_ms:1653006504019.1003 name:Txn2 nr_bytes:1622393856 nr_ops:1584369\ntimestamp_ms:1653006505020.1995 name:Txn2 nr_bytes:1657893888 nr_ops:1619037\ntimestamp_ms:1653006506021.3008 name:Txn2 nr_bytes:1693357056 nr_ops:1653669\ntimestamp_ms:1653006507022.4011 name:Txn2 nr_bytes:1728621568 nr_ops:1688107\ntimestamp_ms:1653006508023.5027 name:Txn2 nr_bytes:1764006912 nr_ops:1722663\ntimestamp_ms:1653006509024.5996 name:Txn2 nr_bytes:1799454720 nr_ops:1757280\ntimestamp_ms:1653006510025.6897 name:Txn2 nr_bytes:1834972160 nr_ops:1791965\ntimestamp_ms:1653006511026.7949 name:Txn2 nr_bytes:1871040512 nr_ops:1827188\ntimestamp_ms:1653006512027.8911 name:Txn2 nr_bytes:1906947072 nr_ops:1862253\ntimestamp_ms:1653006513029.0037 name:Txn2 nr_bytes:1943542784 nr_ops:1897991\ntimestamp_ms:1653006514030.1018 name:Txn2 nr_bytes:1979876352 nr_ops:1933473\ntimestamp_ms:1653006515031.1433 name:Txn2 nr_bytes:2015990784 nr_ops:1968741\ntimestamp_ms:1653006516032.2488 name:Txn2 nr_bytes:2051675136 nr_ops:2003589\nSending signal SIGUSR2 to 140014204352256\ncalled out\ntimestamp_ms:1653006517233.5876 name:Txn2 nr_bytes:2086855680 nr_ops:2037945\n\nTX command [UPERF_CMD_NEXT_TXN, 2] to 11.10.1.241\ntimestamp_ms:1653006517233.6689 name:Txn3 nr_bytes:0 nr_ops:0\ntimestamp_ms:1653006517233.6792 name:Txn3 nr_bytes:0 nr_ops:0\n\n-------------------------------------------------------------------------------\nTX command [UPERF_CMD_SEND_STATS, 0] to 11.10.1.241\ntimestamp_ms:1653006517333.8770 name:Total nr_bytes:2086855680 nr_ops:2037946\n\nGroup Details\n-------------------------------------------------------------------------------\ntimestamp_ms:1653006517233.7976 name:Group0 nr_bytes:4173711358 nr_ops:4075892\n\n\nStrand Details\n-------------------------------------------------------------------------------\ntimestamp_ms:1653006517233.7988 name:Thr0 nr_bytes:2086855680 nr_ops:2037948\n\n\nTxn                Count         avg         cpu         max         min \n-------------------------------------------------------------------------------\nTxn0                   1    344.96us      0.00ns    344.96us    344.96us \nTxn1             1018973     57.89us      0.00ns      5.24ms     22.45us \nTxn2                   1     48.23us      0.00ns     48.23us     48.23us \n\n\nFlowop             Count         avg         cpu         max         min \n-------------------------------------------------------------------------------\nconnect                1    344.14us      0.00ns    344.14us    344.14us \nwrite            1018973      3.86us      0.00ns    143.96us      2.25us \nread             1018972     53.93us      0.00ns      5.24ms      3.48us \ndisconnect             1     47.43us      0.00ns     47.43us     47.43us \n\n\nNetstat statistics for this run\n-------------------------------------------------------------------------------\nNic       opkts/s     ipkts/s      obits/s      ibits/s\neth0            0           2     27.38b/s    804.89b/s \nnet1        16605       16605   144.80Mb/s   144.80Mb/s \n-------------------------------------------------------------------------------\n\nRun Statistics\nHostname            Time       Data   Throughput   Operations      Errors\n-------------------------------------------------------------------------------\n[11.10.1.241] Success11.10.1.241       61.36s     1.94GB   272.06Mb/s      2037948        0.00\nmaster            61.36s     1.94GB   272.06Mb/s      2037948        0.00\n-------------------------------------------------------------------------------\nDifference(%)     -0.00%      0.00%        0.00%        0.00%       0.00%\n\n\n', stderr='', time_seconds=61.414615, hit_timeout=False)
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - process: Got return code 0, expected 0
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - process: Command finished with 1 attempt: ['uperf', '-v', '-a', '-R', '-i', '1', '-m', '/tmp/uperf-test/uperf-rr-tcp-1024-1024-1', '-P', '30000']
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - process: Got sample for command ['uperf', '-v', '-a', '-R', '-i', '1', '-m', '/tmp/uperf-test/uperf-rr-tcp-1024-1024-1', '-P', '30000']: ProcessSample(expected_rc=0, success=True, attempts=1, timeout=None, failed=[], successful=ProcessRun(rc=0, stdout='Error getting SSL CTX:1\nAllocating shared memory of size 156624 bytes\nCompleted handshake phase 1\nStarting handshake phase 2\nHandshake phase 2 with 11.10.1.241\n  Done preprocessing accepts\n  Sent handshake header\n  Sending workorder\n    Sent workorder\n    Sent transaction\n    Sent flowop\n    Sent transaction\n    Sent flowop\n    Sent flowop\n    Sent transaction\n    Sent flowop\nTX worklist success  Sent workorder\nHandshake phase 2 with 11.10.1.241 done\nCompleted handshake phase 2\nStarting 1 threads running profile:rr-tcp-1024-1024-1 ...   0.00 seconds\nTX command [UPERF_CMD_NEXT_TXN, 0] to 11.10.1.241\ntimestamp_ms:1653006456970.5242 name:Txn1 nr_bytes:0 nr_ops:0\ntimestamp_ms:1653006457971.6365 name:Txn1 nr_bytes:0 nr_ops:1\n\nTX command [UPERF_CMD_NEXT_TXN, 1] to 11.10.1.241\ntimestamp_ms:1653006457971.7278 name:Txn2 nr_bytes:0 nr_ops:0\ntimestamp_ms:1653006458972.8125 name:Txn2 nr_bytes:35003392 nr_ops:34183\ntimestamp_ms:1653006459973.5620 name:Txn2 nr_bytes:70376448 nr_ops:68727\ntimestamp_ms:1653006460974.6675 name:Txn2 nr_bytes:105452544 nr_ops:102981\ntimestamp_ms:1653006461975.7651 name:Txn2 nr_bytes:140819456 nr_ops:137519\ntimestamp_ms:1653006462976.8860 name:Txn2 nr_bytes:176185344 nr_ops:172056\ntimestamp_ms:1653006463977.9836 name:Txn2 nr_bytes:210744320 nr_ops:205805\ntimestamp_ms:1653006464979.0981 name:Txn2 nr_bytes:246121472 nr_ops:240353\ntimestamp_ms:1653006465980.1934 name:Txn2 nr_bytes:281521152 nr_ops:274923\ntimestamp_ms:1653006466981.2891 name:Txn2 nr_bytes:316843008 nr_ops:309417\ntimestamp_ms:1653006467982.3877 name:Txn2 nr_bytes:351904768 nr_ops:343657\ntimestamp_ms:1653006468983.4314 name:Txn2 nr_bytes:386964480 nr_ops:377895\ntimestamp_ms:1653006469984.4744 name:Txn2 nr_bytes:422079488 nr_ops:412187\ntimestamp_ms:1653006470985.5168 name:Txn2 nr_bytes:457434112 nr_ops:446713\ntimestamp_ms:1653006471986.5608 name:Txn2 nr_bytes:493741056 nr_ops:482169\ntimestamp_ms:1653006472987.5974 name:Txn2 nr_bytes:528970752 nr_ops:516573\ntimestamp_ms:1653006473988.6899 name:Txn2 nr_bytes:564245504 nr_ops:551021\ntimestamp_ms:1653006474988.8335 name:Txn2 nr_bytes:599528448 nr_ops:585477\ntimestamp_ms:1653006475989.8745 name:Txn2 nr_bytes:634670080 nr_ops:619795\ntimestamp_ms:1653006476990.8325 name:Txn2 nr_bytes:669600768 nr_ops:653907\ntimestamp_ms:1653006477991.8728 name:Txn2 nr_bytes:704732160 nr_ops:688215\ntimestamp_ms:1653006478992.9729 name:Txn2 nr_bytes:739979264 nr_ops:722636\ntimestamp_ms:1653006479993.8372 name:Txn2 nr_bytes:775695360 nr_ops:757515\ntimestamp_ms:1653006480994.9392 name:Txn2 nr_bytes:810957824 nr_ops:791951\ntimestamp_ms:1653006481996.0356 name:Txn2 nr_bytes:846087168 nr_ops:826257\ntimestamp_ms:1653006482997.1367 name:Txn2 nr_bytes:881548288 nr_ops:860887\ntimestamp_ms:1653006483998.1702 name:Txn2 nr_bytes:916847616 nr_ops:895359\ntimestamp_ms:1653006484999.2656 name:Txn2 nr_bytes:952218624 nr_ops:929901\ntimestamp_ms:1653006486000.3142 name:Txn2 nr_bytes:987524096 nr_ops:964379\ntimestamp_ms:1653006487000.8958 name:Txn2 nr_bytes:1022830592 nr_ops:998858\ntimestamp_ms:1653006488001.8970 name:Txn2 nr_bytes:1058028544 nr_ops:1033231\ntimestamp_ms:1653006489002.8999 name:Txn2 nr_bytes:1093389312 nr_ops:1067763\ntimestamp_ms:1653006490004.0032 name:Txn2 nr_bytes:1128631296 nr_ops:1102179\ntimestamp_ms:1653006491004.8318 name:Txn2 nr_bytes:1163740160 nr_ops:1136465\ntimestamp_ms:1653006492005.8318 name:Txn2 nr_bytes:1198932992 nr_ops:1170833\ntimestamp_ms:1653006493006.9255 name:Txn2 nr_bytes:1234369536 nr_ops:1205439\ntimestamp_ms:1653006494008.0142 name:Txn2 nr_bytes:1269517312 nr_ops:1239763\ntimestamp_ms:1653006495009.1973 name:Txn2 nr_bytes:1304501248 nr_ops:1273927\ntimestamp_ms:1653006496010.2563 name:Txn2 nr_bytes:1339544576 nr_ops:1308149\ntimestamp_ms:1653006497011.3586 name:Txn2 nr_bytes:1374798848 nr_ops:1342577\ntimestamp_ms:1653006498012.4607 name:Txn2 nr_bytes:1410073600 nr_ops:1377025\ntimestamp_ms:1653006499013.5540 name:Txn2 nr_bytes:1445518336 nr_ops:1411639\ntimestamp_ms:1653006500014.6433 name:Txn2 nr_bytes:1480774656 nr_ops:1446069\ntimestamp_ms:1653006501015.7861 name:Txn2 nr_bytes:1516153856 nr_ops:1480619\ntimestamp_ms:1653006502016.8887 name:Txn2 nr_bytes:1551550464 nr_ops:1515186\ntimestamp_ms:1653006503018.0032 name:Txn2 nr_bytes:1587024896 nr_ops:1549829\ntimestamp_ms:1653006504019.1003 name:Txn2 nr_bytes:1622393856 nr_ops:1584369\ntimestamp_ms:1653006505020.1995 name:Txn2 nr_bytes:1657893888 nr_ops:1619037\ntimestamp_ms:1653006506021.3008 name:Txn2 nr_bytes:1693357056 nr_ops:1653669\ntimestamp_ms:1653006507022.4011 name:Txn2 nr_bytes:1728621568 nr_ops:1688107\ntimestamp_ms:1653006508023.5027 name:Txn2 nr_bytes:1764006912 nr_ops:1722663\ntimestamp_ms:1653006509024.5996 name:Txn2 nr_bytes:1799454720 nr_ops:1757280\ntimestamp_ms:1653006510025.6897 name:Txn2 nr_bytes:1834972160 nr_ops:1791965\ntimestamp_ms:1653006511026.7949 name:Txn2 nr_bytes:1871040512 nr_ops:1827188\ntimestamp_ms:1653006512027.8911 name:Txn2 nr_bytes:1906947072 nr_ops:1862253\ntimestamp_ms:1653006513029.0037 name:Txn2 nr_bytes:1943542784 nr_ops:1897991\ntimestamp_ms:1653006514030.1018 name:Txn2 nr_bytes:1979876352 nr_ops:1933473\ntimestamp_ms:1653006515031.1433 name:Txn2 nr_bytes:2015990784 nr_ops:1968741\ntimestamp_ms:1653006516032.2488 name:Txn2 nr_bytes:2051675136 nr_ops:2003589\nSending signal SIGUSR2 to 140014204352256\ncalled out\ntimestamp_ms:1653006517233.5876 name:Txn2 nr_bytes:2086855680 nr_ops:2037945\n\nTX command [UPERF_CMD_NEXT_TXN, 2] to 11.10.1.241\ntimestamp_ms:1653006517233.6689 name:Txn3 nr_bytes:0 nr_ops:0\ntimestamp_ms:1653006517233.6792 name:Txn3 nr_bytes:0 nr_ops:0\n\n-------------------------------------------------------------------------------\nTX command [UPERF_CMD_SEND_STATS, 0] to 11.10.1.241\ntimestamp_ms:1653006517333.8770 name:Total nr_bytes:2086855680 nr_ops:2037946\n\nGroup Details\n-------------------------------------------------------------------------------\ntimestamp_ms:1653006517233.7976 name:Group0 nr_bytes:4173711358 nr_ops:4075892\n\n\nStrand Details\n-------------------------------------------------------------------------------\ntimestamp_ms:1653006517233.7988 name:Thr0 nr_bytes:2086855680 nr_ops:2037948\n\n\nTxn                Count         avg         cpu         max         min \n-------------------------------------------------------------------------------\nTxn0                   1    344.96us      0.00ns    344.96us    344.96us \nTxn1             1018973     57.89us      0.00ns      5.24ms     22.45us \nTxn2                   1     48.23us      0.00ns     48.23us     48.23us \n\n\nFlowop             Count         avg         cpu         max         min \n-------------------------------------------------------------------------------\nconnect                1    344.14us      0.00ns    344.14us    344.14us \nwrite            1018973      3.86us      0.00ns    143.96us      2.25us \nread             1018972     53.93us      0.00ns      5.24ms      3.48us \ndisconnect             1     47.43us      0.00ns     47.43us     47.43us \n\n\nNetstat statistics for this run\n-------------------------------------------------------------------------------\nNic       opkts/s     ipkts/s      obits/s      ibits/s\neth0            0           2     27.38b/s    804.89b/s \nnet1        16605       16605   144.80Mb/s   144.80Mb/s \n-------------------------------------------------------------------------------\n\nRun Statistics\nHostname            Time       Data   Throughput   Operations      Errors\n-------------------------------------------------------------------------------\n[11.10.1.241] Success11.10.1.241       61.36s     1.94GB   272.06Mb/s      2037948        0.00\nmaster            61.36s     1.94GB   272.06Mb/s      2037948        0.00\n-------------------------------------------------------------------------------\nDifference(%)     -0.00%      0.00%        0.00%        0.00%       0.00%\n\n\n', stderr='', time_seconds=61.414615, hit_timeout=False))
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - process: Sample 1 has success state for command ['uperf', '-v', '-a', '-R', '-i', '1', '-m', '/tmp/uperf-test/uperf-rr-tcp-1024-1024-1', '-P', '30000']
+2022-05-20T00:28:37Z - INFO     - MainProcess - uperf: Finished collecting sample 0
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample: ProcessSample(expected_rc=0, success=True, attempts=1, timeout=None, failed=[], successful=ProcessRun(rc=0, stdout='Error getting SSL CTX:1\nAllocating shared memory of size 156624 bytes\nCompleted handshake phase 1\nStarting handshake phase 2\nHandshake phase 2 with 11.10.1.241\n  Done preprocessing accepts\n  Sent handshake header\n  Sending workorder\n    Sent workorder\n    Sent transaction\n    Sent flowop\n    Sent transaction\n    Sent flowop\n    Sent flowop\n    Sent transaction\n    Sent flowop\nTX worklist success  Sent workorder\nHandshake phase 2 with 11.10.1.241 done\nCompleted handshake phase 2\nStarting 1 threads running profile:rr-tcp-1024-1024-1 ...   0.00 seconds\nTX command [UPERF_CMD_NEXT_TXN, 0] to 11.10.1.241\ntimestamp_ms:1653006456970.5242 name:Txn1 nr_bytes:0 nr_ops:0\ntimestamp_ms:1653006457971.6365 name:Txn1 nr_bytes:0 nr_ops:1\n\nTX command [UPERF_CMD_NEXT_TXN, 1] to 11.10.1.241\ntimestamp_ms:1653006457971.7278 name:Txn2 nr_bytes:0 nr_ops:0\ntimestamp_ms:1653006458972.8125 name:Txn2 nr_bytes:35003392 nr_ops:34183\ntimestamp_ms:1653006459973.5620 name:Txn2 nr_bytes:70376448 nr_ops:68727\ntimestamp_ms:1653006460974.6675 name:Txn2 nr_bytes:105452544 nr_ops:102981\ntimestamp_ms:1653006461975.7651 name:Txn2 nr_bytes:140819456 nr_ops:137519\ntimestamp_ms:1653006462976.8860 name:Txn2 nr_bytes:176185344 nr_ops:172056\ntimestamp_ms:1653006463977.9836 name:Txn2 nr_bytes:210744320 nr_ops:205805\ntimestamp_ms:1653006464979.0981 name:Txn2 nr_bytes:246121472 nr_ops:240353\ntimestamp_ms:1653006465980.1934 name:Txn2 nr_bytes:281521152 nr_ops:274923\ntimestamp_ms:1653006466981.2891 name:Txn2 nr_bytes:316843008 nr_ops:309417\ntimestamp_ms:1653006467982.3877 name:Txn2 nr_bytes:351904768 nr_ops:343657\ntimestamp_ms:1653006468983.4314 name:Txn2 nr_bytes:386964480 nr_ops:377895\ntimestamp_ms:1653006469984.4744 name:Txn2 nr_bytes:422079488 nr_ops:412187\ntimestamp_ms:1653006470985.5168 name:Txn2 nr_bytes:457434112 nr_ops:446713\ntimestamp_ms:1653006471986.5608 name:Txn2 nr_bytes:493741056 nr_ops:482169\ntimestamp_ms:1653006472987.5974 name:Txn2 nr_bytes:528970752 nr_ops:516573\ntimestamp_ms:1653006473988.6899 name:Txn2 nr_bytes:564245504 nr_ops:551021\ntimestamp_ms:1653006474988.8335 name:Txn2 nr_bytes:599528448 nr_ops:585477\ntimestamp_ms:1653006475989.8745 name:Txn2 nr_bytes:634670080 nr_ops:619795\ntimestamp_ms:1653006476990.8325 name:Txn2 nr_bytes:669600768 nr_ops:653907\ntimestamp_ms:1653006477991.8728 name:Txn2 nr_bytes:704732160 nr_ops:688215\ntimestamp_ms:1653006478992.9729 name:Txn2 nr_bytes:739979264 nr_ops:722636\ntimestamp_ms:1653006479993.8372 name:Txn2 nr_bytes:775695360 nr_ops:757515\ntimestamp_ms:1653006480994.9392 name:Txn2 nr_bytes:810957824 nr_ops:791951\ntimestamp_ms:1653006481996.0356 name:Txn2 nr_bytes:846087168 nr_ops:826257\ntimestamp_ms:1653006482997.1367 name:Txn2 nr_bytes:881548288 nr_ops:860887\ntimestamp_ms:1653006483998.1702 name:Txn2 nr_bytes:916847616 nr_ops:895359\ntimestamp_ms:1653006484999.2656 name:Txn2 nr_bytes:952218624 nr_ops:929901\ntimestamp_ms:1653006486000.3142 name:Txn2 nr_bytes:987524096 nr_ops:964379\ntimestamp_ms:1653006487000.8958 name:Txn2 nr_bytes:1022830592 nr_ops:998858\ntimestamp_ms:1653006488001.8970 name:Txn2 nr_bytes:1058028544 nr_ops:1033231\ntimestamp_ms:1653006489002.8999 name:Txn2 nr_bytes:1093389312 nr_ops:1067763\ntimestamp_ms:1653006490004.0032 name:Txn2 nr_bytes:1128631296 nr_ops:1102179\ntimestamp_ms:1653006491004.8318 name:Txn2 nr_bytes:1163740160 nr_ops:1136465\ntimestamp_ms:1653006492005.8318 name:Txn2 nr_bytes:1198932992 nr_ops:1170833\ntimestamp_ms:1653006493006.9255 name:Txn2 nr_bytes:1234369536 nr_ops:1205439\ntimestamp_ms:1653006494008.0142 name:Txn2 nr_bytes:1269517312 nr_ops:1239763\ntimestamp_ms:1653006495009.1973 name:Txn2 nr_bytes:1304501248 nr_ops:1273927\ntimestamp_ms:1653006496010.2563 name:Txn2 nr_bytes:1339544576 nr_ops:1308149\ntimestamp_ms:1653006497011.3586 name:Txn2 nr_bytes:1374798848 nr_ops:1342577\ntimestamp_ms:1653006498012.4607 name:Txn2 nr_bytes:1410073600 nr_ops:1377025\ntimestamp_ms:1653006499013.5540 name:Txn2 nr_bytes:1445518336 nr_ops:1411639\ntimestamp_ms:1653006500014.6433 name:Txn2 nr_bytes:1480774656 nr_ops:1446069\ntimestamp_ms:1653006501015.7861 name:Txn2 nr_bytes:1516153856 nr_ops:1480619\ntimestamp_ms:1653006502016.8887 name:Txn2 nr_bytes:1551550464 nr_ops:1515186\ntimestamp_ms:1653006503018.0032 name:Txn2 nr_bytes:1587024896 nr_ops:1549829\ntimestamp_ms:1653006504019.1003 name:Txn2 nr_bytes:1622393856 nr_ops:1584369\ntimestamp_ms:1653006505020.1995 name:Txn2 nr_bytes:1657893888 nr_ops:1619037\ntimestamp_ms:1653006506021.3008 name:Txn2 nr_bytes:1693357056 nr_ops:1653669\ntimestamp_ms:1653006507022.4011 name:Txn2 nr_bytes:1728621568 nr_ops:1688107\ntimestamp_ms:1653006508023.5027 name:Txn2 nr_bytes:1764006912 nr_ops:1722663\ntimestamp_ms:1653006509024.5996 name:Txn2 nr_bytes:1799454720 nr_ops:1757280\ntimestamp_ms:1653006510025.6897 name:Txn2 nr_bytes:1834972160 nr_ops:1791965\ntimestamp_ms:1653006511026.7949 name:Txn2 nr_bytes:1871040512 nr_ops:1827188\ntimestamp_ms:1653006512027.8911 name:Txn2 nr_bytes:1906947072 nr_ops:1862253\ntimestamp_ms:1653006513029.0037 name:Txn2 nr_bytes:1943542784 nr_ops:1897991\ntimestamp_ms:1653006514030.1018 name:Txn2 nr_bytes:1979876352 nr_ops:1933473\ntimestamp_ms:1653006515031.1433 name:Txn2 nr_bytes:2015990784 nr_ops:1968741\ntimestamp_ms:1653006516032.2488 name:Txn2 nr_bytes:2051675136 nr_ops:2003589\nSending signal SIGUSR2 to 140014204352256\ncalled out\ntimestamp_ms:1653006517233.5876 name:Txn2 nr_bytes:2086855680 nr_ops:2037945\n\nTX command [UPERF_CMD_NEXT_TXN, 2] to 11.10.1.241\ntimestamp_ms:1653006517233.6689 name:Txn3 nr_bytes:0 nr_ops:0\ntimestamp_ms:1653006517233.6792 name:Txn3 nr_bytes:0 nr_ops:0\n\n-------------------------------------------------------------------------------\nTX command [UPERF_CMD_SEND_STATS, 0] to 11.10.1.241\ntimestamp_ms:1653006517333.8770 name:Total nr_bytes:2086855680 nr_ops:2037946\n\nGroup Details\n-------------------------------------------------------------------------------\ntimestamp_ms:1653006517233.7976 name:Group0 nr_bytes:4173711358 nr_ops:4075892\n\n\nStrand Details\n-------------------------------------------------------------------------------\ntimestamp_ms:1653006517233.7988 name:Thr0 nr_bytes:2086855680 nr_ops:2037948\n\n\nTxn                Count         avg         cpu         max         min \n-------------------------------------------------------------------------------\nTxn0                   1    344.96us      0.00ns    344.96us    344.96us \nTxn1             1018973     57.89us      0.00ns      5.24ms     22.45us \nTxn2                   1     48.23us      0.00ns     48.23us     48.23us \n\n\nFlowop             Count         avg         cpu         max         min \n-------------------------------------------------------------------------------\nconnect                1    344.14us      0.00ns    344.14us    344.14us \nwrite            1018973      3.86us      0.00ns    143.96us      2.25us \nread             1018972     53.93us      0.00ns      5.24ms      3.48us \ndisconnect             1     47.43us      0.00ns     47.43us     47.43us \n\n\nNetstat statistics for this run\n-------------------------------------------------------------------------------\nNic       opkts/s     ipkts/s      obits/s      ibits/s\neth0            0           2     27.38b/s    804.89b/s \nnet1        16605       16605   144.80Mb/s   144.80Mb/s \n-------------------------------------------------------------------------------\n\nRun Statistics\nHostname            Time       Data   Throughput   Operations      Errors\n-------------------------------------------------------------------------------\n[11.10.1.241] Success11.10.1.241       61.36s     1.94GB   272.06Mb/s      2037948        0.00\nmaster            61.36s     1.94GB   272.06Mb/s      2037948        0.00\n-------------------------------------------------------------------------------\nDifference(%)     -0.00%      0.00%        0.00%        0.00%       0.00%\n\n\n', stderr='', time_seconds=61.414615, hit_timeout=False))
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Error getting SSL CTX:1
+Allocating shared memory of size 156624 bytes
+Completed handshake phase 1
+Starting handshake phase 2
+Handshake phase 2 with 11.10.1.241
+  Done preprocessing accepts
+  Sent handshake header
+  Sending workorder
+    Sent workorder
+    Sent transaction
+    Sent flowop
+    Sent transaction
+    Sent flowop
+    Sent flowop
+    Sent transaction
+    Sent flowop
+TX worklist success  Sent workorder
+Handshake phase 2 with 11.10.1.241 done
+Completed handshake phase 2
+Starting 1 threads running profile:rr-tcp-1024-1024-1 ...   0.00 seconds
+TX command [UPERF_CMD_NEXT_TXN, 0] to 11.10.1.241
+timestamp_ms:1653006456970.5242 name:Txn1 nr_bytes:0 nr_ops:0
+timestamp_ms:1653006457971.6365 name:Txn1 nr_bytes:0 nr_ops:1
+
+TX command [UPERF_CMD_NEXT_TXN, 1] to 11.10.1.241
+timestamp_ms:1653006457971.7278 name:Txn2 nr_bytes:0 nr_ops:0
+timestamp_ms:1653006458972.8125 name:Txn2 nr_bytes:35003392 nr_ops:34183
+timestamp_ms:1653006459973.5620 name:Txn2 nr_bytes:70376448 nr_ops:68727
+timestamp_ms:1653006460974.6675 name:Txn2 nr_bytes:105452544 nr_ops:102981
+timestamp_ms:1653006461975.7651 name:Txn2 nr_bytes:140819456 nr_ops:137519
+timestamp_ms:1653006462976.8860 name:Txn2 nr_bytes:176185344 nr_ops:172056
+timestamp_ms:1653006463977.9836 name:Txn2 nr_bytes:210744320 nr_ops:205805
+timestamp_ms:1653006464979.0981 name:Txn2 nr_bytes:246121472 nr_ops:240353
+timestamp_ms:1653006465980.1934 name:Txn2 nr_bytes:281521152 nr_ops:274923
+timestamp_ms:1653006466981.2891 name:Txn2 nr_bytes:316843008 nr_ops:309417
+timestamp_ms:1653006467982.3877 name:Txn2 nr_bytes:351904768 nr_ops:343657
+timestamp_ms:1653006468983.4314 name:Txn2 nr_bytes:386964480 nr_ops:377895
+timestamp_ms:1653006469984.4744 name:Txn2 nr_bytes:422079488 nr_ops:412187
+timestamp_ms:1653006470985.5168 name:Txn2 nr_bytes:457434112 nr_ops:446713
+timestamp_ms:1653006471986.5608 name:Txn2 nr_bytes:493741056 nr_ops:482169
+timestamp_ms:1653006472987.5974 name:Txn2 nr_bytes:528970752 nr_ops:516573
+timestamp_ms:1653006473988.6899 name:Txn2 nr_bytes:564245504 nr_ops:551021
+timestamp_ms:1653006474988.8335 name:Txn2 nr_bytes:599528448 nr_ops:585477
+timestamp_ms:1653006475989.8745 name:Txn2 nr_bytes:634670080 nr_ops:619795
+timestamp_ms:1653006476990.8325 name:Txn2 nr_bytes:669600768 nr_ops:653907
+timestamp_ms:1653006477991.8728 name:Txn2 nr_bytes:704732160 nr_ops:688215
+timestamp_ms:1653006478992.9729 name:Txn2 nr_bytes:739979264 nr_ops:722636
+timestamp_ms:1653006479993.8372 name:Txn2 nr_bytes:775695360 nr_ops:757515
+timestamp_ms:1653006480994.9392 name:Txn2 nr_bytes:810957824 nr_ops:791951
+timestamp_ms:1653006481996.0356 name:Txn2 nr_bytes:846087168 nr_ops:826257
+timestamp_ms:1653006482997.1367 name:Txn2 nr_bytes:881548288 nr_ops:860887
+timestamp_ms:1653006483998.1702 name:Txn2 nr_bytes:916847616 nr_ops:895359
+timestamp_ms:1653006484999.2656 name:Txn2 nr_bytes:952218624 nr_ops:929901
+timestamp_ms:1653006486000.3142 name:Txn2 nr_bytes:987524096 nr_ops:964379
+timestamp_ms:1653006487000.8958 name:Txn2 nr_bytes:1022830592 nr_ops:998858
+timestamp_ms:1653006488001.8970 name:Txn2 nr_bytes:1058028544 nr_ops:1033231
+timestamp_ms:1653006489002.8999 name:Txn2 nr_bytes:1093389312 nr_ops:1067763
+timestamp_ms:1653006490004.0032 name:Txn2 nr_bytes:1128631296 nr_ops:1102179
+timestamp_ms:1653006491004.8318 name:Txn2 nr_bytes:1163740160 nr_ops:1136465
+timestamp_ms:1653006492005.8318 name:Txn2 nr_bytes:1198932992 nr_ops:1170833
+timestamp_ms:1653006493006.9255 name:Txn2 nr_bytes:1234369536 nr_ops:1205439
+timestamp_ms:1653006494008.0142 name:Txn2 nr_bytes:1269517312 nr_ops:1239763
+timestamp_ms:1653006495009.1973 name:Txn2 nr_bytes:1304501248 nr_ops:1273927
+timestamp_ms:1653006496010.2563 name:Txn2 nr_bytes:1339544576 nr_ops:1308149
+timestamp_ms:1653006497011.3586 name:Txn2 nr_bytes:1374798848 nr_ops:1342577
+timestamp_ms:1653006498012.4607 name:Txn2 nr_bytes:1410073600 nr_ops:1377025
+timestamp_ms:1653006499013.5540 name:Txn2 nr_bytes:1445518336 nr_ops:1411639
+timestamp_ms:1653006500014.6433 name:Txn2 nr_bytes:1480774656 nr_ops:1446069
+timestamp_ms:1653006501015.7861 name:Txn2 nr_bytes:1516153856 nr_ops:1480619
+timestamp_ms:1653006502016.8887 name:Txn2 nr_bytes:1551550464 nr_ops:1515186
+timestamp_ms:1653006503018.0032 name:Txn2 nr_bytes:1587024896 nr_ops:1549829
+timestamp_ms:1653006504019.1003 name:Txn2 nr_bytes:1622393856 nr_ops:1584369
+timestamp_ms:1653006505020.1995 name:Txn2 nr_bytes:1657893888 nr_ops:1619037
+timestamp_ms:1653006506021.3008 name:Txn2 nr_bytes:1693357056 nr_ops:1653669
+timestamp_ms:1653006507022.4011 name:Txn2 nr_bytes:1728621568 nr_ops:1688107
+timestamp_ms:1653006508023.5027 name:Txn2 nr_bytes:1764006912 nr_ops:1722663
+timestamp_ms:1653006509024.5996 name:Txn2 nr_bytes:1799454720 nr_ops:1757280
+timestamp_ms:1653006510025.6897 name:Txn2 nr_bytes:1834972160 nr_ops:1791965
+timestamp_ms:1653006511026.7949 name:Txn2 nr_bytes:1871040512 nr_ops:1827188
+timestamp_ms:1653006512027.8911 name:Txn2 nr_bytes:1906947072 nr_ops:1862253
+timestamp_ms:1653006513029.0037 name:Txn2 nr_bytes:1943542784 nr_ops:1897991
+timestamp_ms:1653006514030.1018 name:Txn2 nr_bytes:1979876352 nr_ops:1933473
+timestamp_ms:1653006515031.1433 name:Txn2 nr_bytes:2015990784 nr_ops:1968741
+timestamp_ms:1653006516032.2488 name:Txn2 nr_bytes:2051675136 nr_ops:2003589
+Sending signal SIGUSR2 to 140014204352256
+called out
+timestamp_ms:1653006517233.5876 name:Txn2 nr_bytes:2086855680 nr_ops:2037945
+
+TX command [UPERF_CMD_NEXT_TXN, 2] to 11.10.1.241
+timestamp_ms:1653006517233.6689 name:Txn3 nr_bytes:0 nr_ops:0
+timestamp_ms:1653006517233.6792 name:Txn3 nr_bytes:0 nr_ops:0
+
+-------------------------------------------------------------------------------
+TX command [UPERF_CMD_SEND_STATS, 0] to 11.10.1.241
+timestamp_ms:1653006517333.8770 name:Total nr_bytes:2086855680 nr_ops:2037946
+
+Group Details
+-------------------------------------------------------------------------------
+timestamp_ms:1653006517233.7976 name:Group0 nr_bytes:4173711358 nr_ops:4075892
+
+
+Strand Details
+-------------------------------------------------------------------------------
+timestamp_ms:1653006517233.7988 name:Thr0 nr_bytes:2086855680 nr_ops:2037948
+
+
+Txn                Count         avg         cpu         max         min 
+-------------------------------------------------------------------------------
+Txn0                   1    344.96us      0.00ns    344.96us    344.96us 
+Txn1             1018973     57.89us      0.00ns      5.24ms     22.45us 
+Txn2                   1     48.23us      0.00ns     48.23us     48.23us 
+
+
+Flowop             Count         avg         cpu         max         min 
+-------------------------------------------------------------------------------
+connect                1    344.14us      0.00ns    344.14us    344.14us 
+write            1018973      3.86us      0.00ns    143.96us      2.25us 
+read             1018972     53.93us      0.00ns      5.24ms      3.48us 
+disconnect             1     47.43us      0.00ns     47.43us     47.43us 
+
+
+Netstat statistics for this run
+-------------------------------------------------------------------------------
+Nic       opkts/s     ipkts/s      obits/s      ibits/s
+eth0            0           2     27.38b/s    804.89b/s 
+net1        16605       16605   144.80Mb/s   144.80Mb/s 
+-------------------------------------------------------------------------------
+
+Run Statistics
+Hostname            Time       Data   Throughput   Operations      Errors
+-------------------------------------------------------------------------------
+[11.10.1.241] Success11.10.1.241       61.36s     1.94GB   272.06Mb/s      2037948        0.00
+master            61.36s     1.94GB   272.06Mb/s      2037948        0.00
+-------------------------------------------------------------------------------
+Difference(%)     -0.00%      0.00%        0.00%        0.00%       0.00%
+
+
+
+2022-05-20T00:28:37Z - WARNING  - MainProcess - uperf: The following params will be overwritten due to values found in workload profile name: test_type, protocol, num_threads
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:27:38.972000', 'timestamp': '2022-05-20T00:27:38.972000', 'bytes': 35003392, 'norm_byte': 35003392, 'ops': 34183, 'norm_ops': 34183, 'norm_ltcy': 29.286040335748034, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:27:38.972000",
+        "timestamp": "2022-05-20T00:27:38.972000",
+        "bytes": 35003392,
+        "norm_byte": 35003392,
+        "ops": 34183,
+        "norm_ops": 34183,
+        "norm_ltcy": 29.286040335748034,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "a7d73d02376c6d580274ee0ce9911bb73a12a614e707de172ec9d448d6f0140f",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:27:39.973000', 'timestamp': '2022-05-20T00:27:39.973000', 'bytes': 70376448, 'norm_byte': 35373056, 'ops': 68727, 'norm_ops': 34544, 'norm_ltcy': 28.97028461436863, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:27:39.973000",
+        "timestamp": "2022-05-20T00:27:39.973000",
+        "bytes": 70376448,
+        "norm_byte": 35373056,
+        "ops": 68727,
+        "norm_ops": 34544,
+        "norm_ltcy": 28.97028461436863,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "45ba2b5b06e4866bf37849c32c437e502f4b9084578a29cb2243bb3737e31ebd",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:27:40.974000', 'timestamp': '2022-05-20T00:27:40.974000', 'bytes': 105452544, 'norm_byte': 35076096, 'ops': 102981, 'norm_ops': 34254, 'norm_ltcy': 29.225943502948564, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:27:40.974000",
+        "timestamp": "2022-05-20T00:27:40.974000",
+        "bytes": 105452544,
+        "norm_byte": 35076096,
+        "ops": 102981,
+        "norm_ops": 34254,
+        "norm_ltcy": 29.225943502948564,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "c17b2d8a057865ffdc5dad174d818481209d373de2d0b9124a25f0394fe17c69",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:27:41.975000', 'timestamp': '2022-05-20T00:27:41.975000', 'bytes': 140819456, 'norm_byte': 35366912, 'ops': 137519, 'norm_ops': 34538, 'norm_ltcy': 28.98539742457583, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:27:41.975000",
+        "timestamp": "2022-05-20T00:27:41.975000",
+        "bytes": 140819456,
+        "norm_byte": 35366912,
+        "ops": 137519,
+        "norm_ops": 34538,
+        "norm_ltcy": 28.98539742457583,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "72aef11d5952441b0b9b34c55d45ea0ee3a3b9c2224cbe053a46472f52d48418",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:27:42.976000', 'timestamp': '2022-05-20T00:27:42.976000', 'bytes': 176185344, 'norm_byte': 35365888, 'ops': 172056, 'norm_ops': 34537, 'norm_ltcy': 28.986908232022902, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:27:42.976000",
+        "timestamp": "2022-05-20T00:27:42.976000",
+        "bytes": 176185344,
+        "norm_byte": 35365888,
+        "ops": 172056,
+        "norm_ops": 34537,
+        "norm_ltcy": 28.986908232022902,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "f965bb29cfa72ad1729f06914edecd26bf28f58f0e2b3ddd5ed5ea133e87b399",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:27:43.977000', 'timestamp': '2022-05-20T00:27:43.977000', 'bytes': 210744320, 'norm_byte': 34558976, 'ops': 205805, 'norm_ops': 33749, 'norm_ltcy': 29.663031682420222, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:27:43.977000",
+        "timestamp": "2022-05-20T00:27:43.977000",
+        "bytes": 210744320,
+        "norm_byte": 34558976,
+        "ops": 205805,
+        "norm_ops": 33749,
+        "norm_ltcy": 29.663031682420222,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "147a6daf9bb137480f883835769de29b16250a35575e08d508bf36e7bf43be39",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:27:44.979000', 'timestamp': '2022-05-20T00:27:44.979000', 'bytes': 246121472, 'norm_byte': 35377152, 'ops': 240353, 'norm_ops': 34548, 'norm_ltcy': 28.97749513584361, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:27:44.979000",
+        "timestamp": "2022-05-20T00:27:44.979000",
+        "bytes": 246121472,
+        "norm_byte": 35377152,
+        "ops": 240353,
+        "norm_ops": 34548,
+        "norm_ltcy": 28.97749513584361,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "6402c666fe4664399e01c20191b7392ac9a58b2741b3db52176a2952489e76e7",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:27:45.980000', 'timestamp': '2022-05-20T00:27:45.980000', 'bytes': 281521152, 'norm_byte': 35399680, 'ops': 274923, 'norm_ops': 34570, 'norm_ltcy': 28.958496234994215, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:27:45.980000",
+        "timestamp": "2022-05-20T00:27:45.980000",
+        "bytes": 281521152,
+        "norm_byte": 35399680,
+        "ops": 274923,
+        "norm_ops": 34570,
+        "norm_ltcy": 28.958496234994215,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "25bd6b06586be3dd6a2ed89d989429447974d1ccb3c6e566be870b5fb19578d9",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:27:46.981000', 'timestamp': '2022-05-20T00:27:46.981000', 'bytes': 316843008, 'norm_byte': 35321856, 'ops': 309417, 'norm_ops': 34494, 'norm_ltcy': 29.02231411622311, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:27:46.981000",
+        "timestamp": "2022-05-20T00:27:46.981000",
+        "bytes": 316843008,
+        "norm_byte": 35321856,
+        "ops": 309417,
+        "norm_ops": 34494,
+        "norm_ltcy": 29.02231411622311,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "764c91b893edca3a448bf72965f8deb1248bf20abee81b40fcd43c0af545e365",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:27:47.982000', 'timestamp': '2022-05-20T00:27:47.982000', 'bytes': 351904768, 'norm_byte': 35061760, 'ops': 343657, 'norm_ops': 34240, 'norm_ltcy': 29.23769371531834, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:27:47.982000",
+        "timestamp": "2022-05-20T00:27:47.982000",
+        "bytes": 351904768,
+        "norm_byte": 35061760,
+        "ops": 343657,
+        "norm_ops": 34240,
+        "norm_ltcy": 29.23769371531834,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "7e20bbd7aebb0011b72e4f3e8e8eea61d96bfad2a7526a5c66a6cc6b26da93c3",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:27:48.983000', 'timestamp': '2022-05-20T00:27:48.983000', 'bytes': 386964480, 'norm_byte': 35059712, 'ops': 377895, 'norm_ops': 34238, 'norm_ltcy': 29.2377972186423, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:27:48.983000",
+        "timestamp": "2022-05-20T00:27:48.983000",
+        "bytes": 386964480,
+        "norm_byte": 35059712,
+        "ops": 377895,
+        "norm_ops": 34238,
+        "norm_ltcy": 29.2377972186423,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "889a7916cc4cc7946a693795480c821a77e3853d126f400a5ee695359cec45bc",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:27:49.984000', 'timestamp': '2022-05-20T00:27:49.984000', 'bytes': 422079488, 'norm_byte': 35115008, 'ops': 412187, 'norm_ops': 34292, 'norm_ltcy': 29.191734770500407, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:27:49.984000",
+        "timestamp": "2022-05-20T00:27:49.984000",
+        "bytes": 422079488,
+        "norm_byte": 35115008,
+        "ops": 412187,
+        "norm_ops": 34292,
+        "norm_ltcy": 29.191734770500407,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "aa0d035b044e2db0d17d3bd1f58bf35027049edaea0d62884ab7dcee27c8e9b8",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:27:50.985000', 'timestamp': '2022-05-20T00:27:50.985000', 'bytes': 457434112, 'norm_byte': 35354624, 'ops': 446713, 'norm_ops': 34526, 'norm_ltcy': 28.99387361607919, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:27:50.985000",
+        "timestamp": "2022-05-20T00:27:50.985000",
+        "bytes": 457434112,
+        "norm_byte": 35354624,
+        "ops": 446713,
+        "norm_ops": 34526,
+        "norm_ltcy": 28.99387361607919,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "a04b1fa74eb9852e56bc06023696c648e8f99d8e8a856849c1be14dcede8807e",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:27:51.986000', 'timestamp': '2022-05-20T00:27:51.986000', 'bytes': 493741056, 'norm_byte': 36306944, 'ops': 482169, 'norm_ops': 35456, 'norm_ltcy': 28.233414522577277, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:27:51.986000",
+        "timestamp": "2022-05-20T00:27:51.986000",
+        "bytes": 493741056,
+        "norm_byte": 36306944,
+        "ops": 482169,
+        "norm_ops": 35456,
+        "norm_ltcy": 28.233414522577277,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "1f499f8e3bb7461a0c58872902aff4ddbaf6d494595627ddbcddd0c3871eafac",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:27:52.987000', 'timestamp': '2022-05-20T00:27:52.987000', 'bytes': 528970752, 'norm_byte': 35229696, 'ops': 516573, 'norm_ops': 34404, 'norm_ltcy': 29.096518459881118, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:27:52.987000",
+        "timestamp": "2022-05-20T00:27:52.987000",
+        "bytes": 528970752,
+        "norm_byte": 35229696,
+        "ops": 516573,
+        "norm_ops": 34404,
+        "norm_ltcy": 29.096518459881118,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "42296ef2b74dda64a8962fd812c878bbc0a858d8c7986439070b5547db1dfd59",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:27:53.988000', 'timestamp': '2022-05-20T00:27:53.988000', 'bytes': 564245504, 'norm_byte': 35274752, 'ops': 551021, 'norm_ops': 34448, 'norm_ltcy': 29.060976814238128, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:27:53.988000",
+        "timestamp": "2022-05-20T00:27:53.988000",
+        "bytes": 564245504,
+        "norm_byte": 35274752,
+        "ops": 551021,
+        "norm_ops": 34448,
+        "norm_ltcy": 29.060976814238128,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "0fd7d63b0271f29952c1fb508e1d041790d18c8d18f5a274102f8e996b06c6fd",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:27:54.988000', 'timestamp': '2022-05-20T00:27:54.988000', 'bytes': 599528448, 'norm_byte': 35282944, 'ops': 585477, 'norm_ops': 34456, 'norm_ltcy': 29.026687795666938, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:27:54.988000",
+        "timestamp": "2022-05-20T00:27:54.988000",
+        "bytes": 599528448,
+        "norm_byte": 35282944,
+        "ops": 585477,
+        "norm_ops": 34456,
+        "norm_ltcy": 29.026687795666938,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "8d1acbf07f623a24cd7a041cd633c5cadea99f2b5fdc2dedfefe1df5e76fc1a7",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:27:55.989000', 'timestamp': '2022-05-20T00:27:55.989000', 'bytes': 634670080, 'norm_byte': 35141632, 'ops': 619795, 'norm_ops': 34318, 'norm_ltcy': 29.169561618538378, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:27:55.989000",
+        "timestamp": "2022-05-20T00:27:55.989000",
+        "bytes": 634670080,
+        "norm_byte": 35141632,
+        "ops": 619795,
+        "norm_ops": 34318,
+        "norm_ltcy": 29.169561618538378,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "6591e79abc606da5d82ec18a47f8dea6e388438055d901bd8e717707314478ef",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:27:56.990000', 'timestamp': '2022-05-20T00:27:56.990000', 'bytes': 669600768, 'norm_byte': 34930688, 'ops': 653907, 'norm_ops': 34112, 'norm_ltcy': 29.343281185873007, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:27:56.990000",
+        "timestamp": "2022-05-20T00:27:56.990000",
+        "bytes": 669600768,
+        "norm_byte": 34930688,
+        "ops": 653907,
+        "norm_ops": 34112,
+        "norm_ltcy": 29.343281185873007,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "31074a813529c8edc9e9ee6e9f13774cdc49c2c998c837995d45e50ea26a251e",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:27:57.991000', 'timestamp': '2022-05-20T00:27:57.991000', 'bytes': 704732160, 'norm_byte': 35131392, 'ops': 688215, 'norm_ops': 34308, 'norm_ltcy': 29.17804253244506, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:27:57.991000",
+        "timestamp": "2022-05-20T00:27:57.991000",
+        "bytes": 704732160,
+        "norm_byte": 35131392,
+        "ops": 688215,
+        "norm_ops": 34308,
+        "norm_ltcy": 29.17804253244506,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "82bd551d8eb0eb9a69c1a31df712d5e11867a34fec3d4ea176ad16d9580843d9",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:27:58.992000', 'timestamp': '2022-05-20T00:27:58.992000', 'bytes': 739979264, 'norm_byte': 35247104, 'ops': 722636, 'norm_ops': 34421, 'norm_ltcy': 29.0839922621728, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:27:58.992000",
+        "timestamp": "2022-05-20T00:27:58.992000",
+        "bytes": 739979264,
+        "norm_byte": 35247104,
+        "ops": 722636,
+        "norm_ops": 34421,
+        "norm_ltcy": 29.0839922621728,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "0d0c0912df96136d80f82e6a9ecb92e24665b01d7b3cd0fed58e66ba362d45f2",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:27:59.993000', 'timestamp': '2022-05-20T00:27:59.993000', 'bytes': 775695360, 'norm_byte': 35716096, 'ops': 757515, 'norm_ops': 34879, 'norm_ltcy': 28.695325491341496, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:27:59.993000",
+        "timestamp": "2022-05-20T00:27:59.993000",
+        "bytes": 775695360,
+        "norm_byte": 35716096,
+        "ops": 757515,
+        "norm_ops": 34879,
+        "norm_ltcy": 28.695325491341496,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "0e252f8c7f5c344a358ad11791dce32aae25f21305eac18f5ec87026ef071b28",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:28:00.994000', 'timestamp': '2022-05-20T00:28:00.994000', 'bytes': 810957824, 'norm_byte': 35262464, 'ops': 791951, 'norm_ops': 34436, 'norm_ltcy': 29.071380264294632, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:28:00.994000",
+        "timestamp": "2022-05-20T00:28:00.994000",
+        "bytes": 810957824,
+        "norm_byte": 35262464,
+        "ops": 791951,
+        "norm_ops": 34436,
+        "norm_ltcy": 29.071380264294632,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "04918f437270b388b2cfda07d7b677defbd6df2e944cd60ab30a1177e9fb006c",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:28:01.996000', 'timestamp': '2022-05-20T00:28:01.996000', 'bytes': 846087168, 'norm_byte': 35129344, 'ops': 826257, 'norm_ops': 34306, 'norm_ltcy': 29.18138038672171, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:28:01.996000",
+        "timestamp": "2022-05-20T00:28:01.996000",
+        "bytes": 846087168,
+        "norm_byte": 35129344,
+        "ops": 826257,
+        "norm_ops": 34306,
+        "norm_ltcy": 29.18138038672171,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "64acd7da9d3b211a490de853ef034df2d9e614823276e8d57d6f8ff22230a205",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:28:02.997000', 'timestamp': '2022-05-20T00:28:02.997000', 'bytes': 881548288, 'norm_byte': 35461120, 'ops': 860887, 'norm_ops': 34630, 'norm_ltcy': 28.90849189196506, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:28:02.997000",
+        "timestamp": "2022-05-20T00:28:02.997000",
+        "bytes": 881548288,
+        "norm_byte": 35461120,
+        "ops": 860887,
+        "norm_ops": 34630,
+        "norm_ltcy": 28.90849189196506,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "5e4be68224c72144cda72f438faab3ed187faaf63a6b6be47133e64483255499",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:28:03.998000', 'timestamp': '2022-05-20T00:28:03.998000', 'bytes': 916847616, 'norm_byte': 35299328, 'ops': 895359, 'norm_ops': 34472, 'norm_ltcy': 29.039030148109333, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:28:03.998000",
+        "timestamp": "2022-05-20T00:28:03.998000",
+        "bytes": 916847616,
+        "norm_byte": 35299328,
+        "ops": 895359,
+        "norm_ops": 34472,
+        "norm_ltcy": 29.039030148109333,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "ea343f090ba4bde02d7c4cf016ebbde239805e069ade687507e1c427cf2d672e",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:28:04.999000', 'timestamp': '2022-05-20T00:28:04.999000', 'bytes': 952218624, 'norm_byte': 35371008, 'ops': 929901, 'norm_ops': 34542, 'norm_ltcy': 28.981977273590847, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:28:04.999000",
+        "timestamp": "2022-05-20T00:28:04.999000",
+        "bytes": 952218624,
+        "norm_byte": 35371008,
+        "ops": 929901,
+        "norm_ops": 34542,
+        "norm_ltcy": 28.981977273590847,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "27ad81ecfc0156a4812e15740c482f9f6d59467eac397b61d2d36c7fe14270f8",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:28:06', 'timestamp': '2022-05-20T00:28:06', 'bytes': 987524096, 'norm_byte': 35305472, 'ops': 964379, 'norm_ops': 34478, 'norm_ltcy': 29.03441568491139, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:28:06",
+        "timestamp": "2022-05-20T00:28:06",
+        "bytes": 987524096,
+        "norm_byte": 35305472,
+        "ops": 964379,
+        "norm_ops": 34478,
+        "norm_ltcy": 29.03441568491139,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "4033f63f0d7ac187d3856138424170b79ea35991281728fd27eb2cf2ae98387e",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:28:07', 'timestamp': '2022-05-20T00:28:07', 'bytes': 1022830592, 'norm_byte': 35306496, 'ops': 998858, 'norm_ops': 34479, 'norm_ltcy': 29.020027929138028, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:28:07",
+        "timestamp": "2022-05-20T00:28:07",
+        "bytes": 1022830592,
+        "norm_byte": 35306496,
+        "ops": 998858,
+        "norm_ops": 34479,
+        "norm_ltcy": 29.020027929138028,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "2b9ece862b74c438ec3c7907a3560c60f109c468f05e311ece5cd849484ee6a6",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:28:08.001000', 'timestamp': '2022-05-20T00:28:08.001000', 'bytes': 1058028544, 'norm_byte': 35197952, 'ops': 1033231, 'norm_ops': 34373, 'norm_ltcy': 29.12172986655587, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:28:08.001000",
+        "timestamp": "2022-05-20T00:28:08.001000",
+        "bytes": 1058028544,
+        "norm_byte": 35197952,
+        "ops": 1033231,
+        "norm_ops": 34373,
+        "norm_ltcy": 29.12172986655587,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "c88ea1e43b9e8c46129dbac348f3e3400e1d373347403a7e95356698dc5da479",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:28:09.002000', 'timestamp': '2022-05-20T00:28:09.002000', 'bytes': 1093389312, 'norm_byte': 35360768, 'ops': 1067763, 'norm_ops': 34532, 'norm_ltcy': 28.987690538848025, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:28:09.002000",
+        "timestamp": "2022-05-20T00:28:09.002000",
+        "bytes": 1093389312,
+        "norm_byte": 35360768,
+        "ops": 1067763,
+        "norm_ops": 34532,
+        "norm_ltcy": 28.987690538848025,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "ec8d4bee993cdd094631d9737e93ec2703e76a85ad4cab10cad354a49d1effe3",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:28:10.004000', 'timestamp': '2022-05-20T00:28:10.004000', 'bytes': 1128631296, 'norm_byte': 35241984, 'ops': 1102179, 'norm_ops': 34416, 'norm_ltcy': 29.088309840898855, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:28:10.004000",
+        "timestamp": "2022-05-20T00:28:10.004000",
+        "bytes": 1128631296,
+        "norm_byte": 35241984,
+        "ops": 1102179,
+        "norm_ops": 34416,
+        "norm_ltcy": 29.088309840898855,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "d8bb74188b286fedfccee0c652ae5cb986d08e5cbfc7d869f9d20bd900246f63",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:28:11.004000', 'timestamp': '2022-05-20T00:28:11.004000', 'bytes': 1163740160, 'norm_byte': 35108864, 'ops': 1136465, 'norm_ops': 34286, 'norm_ltcy': 29.190591299108966, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:28:11.004000",
+        "timestamp": "2022-05-20T00:28:11.004000",
+        "bytes": 1163740160,
+        "norm_byte": 35108864,
+        "ops": 1136465,
+        "norm_ops": 34286,
+        "norm_ltcy": 29.190591299108966,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "544315687d6f624e7642d3e02d8fd99d5635a19afab074a4bd405af8edfd2b15",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:28:12.005000', 'timestamp': '2022-05-20T00:28:12.005000', 'bytes': 1198932992, 'norm_byte': 35192832, 'ops': 1170833, 'norm_ops': 34368, 'norm_ltcy': 29.125931098696462, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:28:12.005000",
+        "timestamp": "2022-05-20T00:28:12.005000",
+        "bytes": 1198932992,
+        "norm_byte": 35192832,
+        "ops": 1170833,
+        "norm_ops": 34368,
+        "norm_ltcy": 29.125931098696462,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "3902dd9d1058719db8f14e49571553610226c78d54fcf056229ea462b5b65936",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:28:13.006000', 'timestamp': '2022-05-20T00:28:13.006000', 'bytes': 1234369536, 'norm_byte': 35436544, 'ops': 1205439, 'norm_ops': 34606, 'norm_ltcy': 28.928328902502457, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:28:13.006000",
+        "timestamp": "2022-05-20T00:28:13.006000",
+        "bytes": 1234369536,
+        "norm_byte": 35436544,
+        "ops": 1205439,
+        "norm_ops": 34606,
+        "norm_ltcy": 28.928328902502457,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "8c87ca42df3a8f80502a74025bc7ccd33804dc43f35c1f549dfbdc5582cfd3bf",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:28:14.008000', 'timestamp': '2022-05-20T00:28:14.008000', 'bytes': 1269517312, 'norm_byte': 35147776, 'ops': 1239763, 'norm_ops': 34324, 'norm_ltcy': 29.165849640102405, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:28:14.008000",
+        "timestamp": "2022-05-20T00:28:14.008000",
+        "bytes": 1269517312,
+        "norm_byte": 35147776,
+        "ops": 1239763,
+        "norm_ops": 34324,
+        "norm_ltcy": 29.165849640102405,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "5db2c074d556ebc6d51270693d084da81fab9a4de049aef050f22feb227303f3",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:28:15.009000', 'timestamp': '2022-05-20T00:28:15.009000', 'bytes': 1304501248, 'norm_byte': 34983936, 'ops': 1273927, 'norm_ops': 34164, 'norm_ltcy': 29.305207395760156, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:28:15.009000",
+        "timestamp": "2022-05-20T00:28:15.009000",
+        "bytes": 1304501248,
+        "norm_byte": 34983936,
+        "ops": 1273927,
+        "norm_ops": 34164,
+        "norm_ltcy": 29.305207395760156,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "8dc2770773680138207d996a321f7c904a626e845fa3f2b2dcc6c37d4ee87569",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:28:16.010000', 'timestamp': '2022-05-20T00:28:16.010000', 'bytes': 1339544576, 'norm_byte': 35043328, 'ops': 1308149, 'norm_ops': 34222, 'norm_ltcy': 29.25191637049997, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:28:16.010000",
+        "timestamp": "2022-05-20T00:28:16.010000",
+        "bytes": 1339544576,
+        "norm_byte": 35043328,
+        "ops": 1308149,
+        "norm_ops": 34222,
+        "norm_ltcy": 29.25191637049997,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "0fef7582e55745e04af12d6817aff57dcfba79c2ff42e9a62762196de3b60746",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:28:17.011000', 'timestamp': '2022-05-20T00:28:17.011000', 'bytes': 1374798848, 'norm_byte': 35254272, 'ops': 1342577, 'norm_ops': 34428, 'norm_ltcy': 29.07814264325186, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:28:17.011000",
+        "timestamp": "2022-05-20T00:28:17.011000",
+        "bytes": 1374798848,
+        "norm_byte": 35254272,
+        "ops": 1342577,
+        "norm_ops": 34428,
+        "norm_ltcy": 29.07814264325186,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "cbd3ebf6faae72894605de37f8dab0c6899510b786b5a8dd546831e26164a5d8",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:28:18.012000', 'timestamp': '2022-05-20T00:28:18.012000', 'bytes': 1410073600, 'norm_byte': 35274752, 'ops': 1377025, 'norm_ops': 34448, 'norm_ltcy': 29.061253215897874, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:28:18.012000",
+        "timestamp": "2022-05-20T00:28:18.012000",
+        "bytes": 1410073600,
+        "norm_byte": 35274752,
+        "ops": 1377025,
+        "norm_ops": 34448,
+        "norm_ltcy": 29.061253215897874,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "6b148f420e99fdc552b7002ecee66ace3bd03d6fef150ef60021d3d9427b3d3a",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:28:19.013000', 'timestamp': '2022-05-20T00:28:19.013000', 'bytes': 1445518336, 'norm_byte': 35444736, 'ops': 1411639, 'norm_ops': 34614, 'norm_ltcy': 28.921628870363147, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:28:19.013000",
+        "timestamp": "2022-05-20T00:28:19.013000",
+        "bytes": 1445518336,
+        "norm_byte": 35444736,
+        "ops": 1411639,
+        "norm_ops": 34614,
+        "norm_ltcy": 28.921628870363147,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "ffca8ec8a13dbbb4461b0d2afe2fbf4698f3dd429c2e51d9bbbc56a2ebf87b3d",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:28:20.014000', 'timestamp': '2022-05-20T00:28:20.014000', 'bytes': 1480774656, 'norm_byte': 35256320, 'ops': 1446069, 'norm_ops': 34430, 'norm_ltcy': 29.076077707486203, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:28:20.014000",
+        "timestamp": "2022-05-20T00:28:20.014000",
+        "bytes": 1480774656,
+        "norm_byte": 35256320,
+        "ops": 1446069,
+        "norm_ops": 34430,
+        "norm_ltcy": 29.076077707486203,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "0f42d4527e7cd8a2d2fde259dceab17ff2f14e298629bf87650f3339c45f8ff1",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:28:21.015000', 'timestamp': '2022-05-20T00:28:21.015000', 'bytes': 1516153856, 'norm_byte': 35379200, 'ops': 1480619, 'norm_ops': 34550, 'norm_ltcy': 28.97663740276773, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:28:21.015000",
+        "timestamp": "2022-05-20T00:28:21.015000",
+        "bytes": 1516153856,
+        "norm_byte": 35379200,
+        "ops": 1480619,
+        "norm_ops": 34550,
+        "norm_ltcy": 28.97663740276773,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "4562393f83cf014097466e2242f7042268720e6b0b2bb75c684badfabf7d29ec",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:28:22.016000', 'timestamp': '2022-05-20T00:28:22.016000', 'bytes': 1551550464, 'norm_byte': 35396608, 'ops': 1515186, 'norm_ops': 34567, 'norm_ltcy': 28.961221369008015, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:28:22.016000",
+        "timestamp": "2022-05-20T00:28:22.016000",
+        "bytes": 1551550464,
+        "norm_byte": 35396608,
+        "ops": 1515186,
+        "norm_ops": 34567,
+        "norm_ltcy": 28.961221369008015,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "faa78722def639d9ffd059bd703aad25b0b4281846ca9d9c575fd1de897714c9",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:28:23.018000', 'timestamp': '2022-05-20T00:28:23.018000', 'bytes': 1587024896, 'norm_byte': 35474432, 'ops': 1549829, 'norm_ops': 34643, 'norm_ltcy': 28.89803140470297, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:28:23.018000",
+        "timestamp": "2022-05-20T00:28:23.018000",
+        "bytes": 1587024896,
+        "norm_byte": 35474432,
+        "ops": 1549829,
+        "norm_ops": 34643,
+        "norm_ltcy": 28.89803140470297,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "3e28192575ed6735395c05ba68b4f8f555ca767cf25f5d869f2be64af89a969c",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:28:24.019000', 'timestamp': '2022-05-20T00:28:24.019000', 'bytes': 1622393856, 'norm_byte': 35368960, 'ops': 1584369, 'norm_ops': 34540, 'norm_ltcy': 28.983704920925017, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:28:24.019000",
+        "timestamp": "2022-05-20T00:28:24.019000",
+        "bytes": 1622393856,
+        "norm_byte": 35368960,
+        "ops": 1584369,
+        "norm_ops": 34540,
+        "norm_ltcy": 28.983704920925017,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "d2fab60019771741a0402d37886fb999a211f13765064c9a130044b5533bdf3e",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:28:25.020000', 'timestamp': '2022-05-20T00:28:25.020000', 'bytes': 1657893888, 'norm_byte': 35500032, 'ops': 1619037, 'norm_ops': 34668, 'norm_ltcy': 28.87674861814209, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:28:25.020000",
+        "timestamp": "2022-05-20T00:28:25.020000",
+        "bytes": 1657893888,
+        "norm_byte": 35500032,
+        "ops": 1619037,
+        "norm_ops": 34668,
+        "norm_ltcy": 28.87674861814209,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "bc28c14bbaeeea39b32213fe3e003ac5734f4e2b86c9d06f3d0e7bc7bfe29e41",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:28:26.021000', 'timestamp': '2022-05-20T00:28:26.021000', 'bytes': 1693357056, 'norm_byte': 35463168, 'ops': 1653669, 'norm_ops': 34632, 'norm_ltcy': 28.906829474456426, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:28:26.021000",
+        "timestamp": "2022-05-20T00:28:26.021000",
+        "bytes": 1693357056,
+        "norm_byte": 35463168,
+        "ops": 1653669,
+        "norm_ops": 34632,
+        "norm_ltcy": 28.906829474456426,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "3455e448f7f0fece3ff1d909d3755006ad316191f81702647d821391491c1279",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:28:27.022000', 'timestamp': '2022-05-20T00:28:27.022000', 'bytes': 1728621568, 'norm_byte': 35264512, 'ops': 1688107, 'norm_ops': 34438, 'norm_ltcy': 29.06964230782493, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:28:27.022000",
+        "timestamp": "2022-05-20T00:28:27.022000",
+        "bytes": 1728621568,
+        "norm_byte": 35264512,
+        "ops": 1688107,
+        "norm_ops": 34438,
+        "norm_ltcy": 29.06964230782493,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "e408c06a9e25f379eefe640a555e9af7f81e549f835c28037484b89fae7ca09b",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:28:28.023000', 'timestamp': '2022-05-20T00:28:28.023000', 'bytes': 1764006912, 'norm_byte': 35385344, 'ops': 1722663, 'norm_ops': 34556, 'norm_ltcy': 28.970412157078364, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:28:28.023000",
+        "timestamp": "2022-05-20T00:28:28.023000",
+        "bytes": 1764006912,
+        "norm_byte": 35385344,
+        "ops": 1722663,
+        "norm_ops": 34556,
+        "norm_ltcy": 28.970412157078364,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "7ef350bb4e7b1d0fc69f97f66a7614272363367c341744f642bdc8c65bc0c94e",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:28:29.024000', 'timestamp': '2022-05-20T00:28:29.024000', 'bytes': 1799454720, 'norm_byte': 35447808, 'ops': 1757280, 'norm_ops': 34617, 'norm_ltcy': 28.919228235494845, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:28:29.024000",
+        "timestamp": "2022-05-20T00:28:29.024000",
+        "bytes": 1799454720,
+        "norm_byte": 35447808,
+        "ops": 1757280,
+        "norm_ops": 34617,
+        "norm_ltcy": 28.919228235494845,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "8cdd9a7e71d15207e420e471cdcc15000457b9c076c66b66547fb557784fa081",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:28:30.025000', 'timestamp': '2022-05-20T00:28:30.025000', 'bytes': 1834972160, 'norm_byte': 35517440, 'ops': 1791965, 'norm_ops': 34685, 'norm_ltcy': 28.86233495432103, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:28:30.025000",
+        "timestamp": "2022-05-20T00:28:30.025000",
+        "bytes": 1834972160,
+        "norm_byte": 35517440,
+        "ops": 1791965,
+        "norm_ops": 34685,
+        "norm_ltcy": 28.86233495432103,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "110df935c45b1b0dbc184fe7ff27eaf48e0ec8a58ad2bab4f2feb4d2af92ffb2",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:28:31.026000', 'timestamp': '2022-05-20T00:28:31.026000', 'bytes': 1871040512, 'norm_byte': 36068352, 'ops': 1827188, 'norm_ops': 35223, 'norm_ltcy': 28.42191819576342, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:28:31.026000",
+        "timestamp": "2022-05-20T00:28:31.026000",
+        "bytes": 1871040512,
+        "norm_byte": 36068352,
+        "ops": 1827188,
+        "norm_ops": 35223,
+        "norm_ltcy": 28.42191819576342,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "7086fa4d6f894208825559ba745c8aa12778d2be7bbd94476530e862fb3d5b43",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:28:32.027000', 'timestamp': '2022-05-20T00:28:32.027000', 'bytes': 1906947072, 'norm_byte': 35906560, 'ops': 1862253, 'norm_ops': 35065, 'norm_ltcy': 28.549727403571936, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:28:32.027000",
+        "timestamp": "2022-05-20T00:28:32.027000",
+        "bytes": 1906947072,
+        "norm_byte": 35906560,
+        "ops": 1862253,
+        "norm_ops": 35065,
+        "norm_ltcy": 28.549727403571936,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "15b36dcb39a23f021d5e10ff9955964b4ae64e60674d682986cf2a61eee0b41c",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:28:33.029000', 'timestamp': '2022-05-20T00:28:33.029000', 'bytes': 1943542784, 'norm_byte': 36595712, 'ops': 1897991, 'norm_ops': 35738, 'norm_ltcy': 28.01255103330139, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:28:33.029000",
+        "timestamp": "2022-05-20T00:28:33.029000",
+        "bytes": 1943542784,
+        "norm_byte": 36595712,
+        "ops": 1897991,
+        "norm_ops": 35738,
+        "norm_ltcy": 28.01255103330139,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "a37d0f824d0c48ac9bb790835e0b4ac90a374b55993a8c24467a5a4b7109cb4d",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:28:34.030000', 'timestamp': '2022-05-20T00:28:34.030000', 'bytes': 1979876352, 'norm_byte': 36333568, 'ops': 1933473, 'norm_ops': 35482, 'norm_ltcy': 28.21425355197706, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:28:34.030000",
+        "timestamp": "2022-05-20T00:28:34.030000",
+        "bytes": 1979876352,
+        "norm_byte": 36333568,
+        "ops": 1933473,
+        "norm_ops": 35482,
+        "norm_ltcy": 28.21425355197706,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "49db032f035881768457e931049767aa67263bc6191e5e9a5952830fc1f8fe78",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:28:35.031000', 'timestamp': '2022-05-20T00:28:35.031000', 'bytes': 2015990784, 'norm_byte': 36114432, 'ops': 1968741, 'norm_ops': 35268, 'norm_ltcy': 28.383846657203414, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:28:35.031000",
+        "timestamp": "2022-05-20T00:28:35.031000",
+        "bytes": 2015990784,
+        "norm_byte": 36114432,
+        "ops": 1968741,
+        "norm_ops": 35268,
+        "norm_ltcy": 28.383846657203414,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "f6384f6ce21b52ff035eddc608f60b191c41b231ea7f8d3ec98865d8e7a0503a",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:28:36.032000', 'timestamp': '2022-05-20T00:28:36.032000', 'bytes': 2051675136, 'norm_byte': 35684352, 'ops': 2003589, 'norm_ops': 34848, 'norm_ltcy': 28.72777401142103, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:28:36.032000",
+        "timestamp": "2022-05-20T00:28:36.032000",
+        "bytes": 2051675136,
+        "norm_byte": 35684352,
+        "ops": 2003589,
+        "norm_ops": 34848,
+        "norm_ltcy": 28.72777401142103,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "07336ce99d9350fec40d011fb278edbf02c4a44cc647a1d9aab2ee165795e58a",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - uperf: Got sample result: BenchmarkResult(name='uperf', metadata={'cluster_name': 'test-cluster', 'user': 'ripsaw', 'uuid': '34bacf5a-af10-58df-923c-3a1593744552'}, config={'test_type': 'rr', 'protocol': 'tcp', 'message_size': 1024, 'read_message_size': 1024, 'num_threads': 1, 'duration': 60, 'kind': 'pod', 'hostnetwork': 'False', 'remote_ip': '11.10.1.241', 'client_ips': '10.131.1.221 11.10.1.201 ', 'service_ip': 'False', 'service_type': '', 'port': '30000', 'client_node': 'worker001-740xd', 'server_node': 'unknown', 'num_pairs': '1', 'multus_client': 'macvlan-range-0', 'networkpolicy': 'False', 'density': '1', 'nodes_in_iter': '1', 'step_size': '', 'colocate': '', 'density_range': '', 'node_range': '', 'pod_id': None}, data={'uperf_ts': '2022-05-20T00:28:37.233000', 'timestamp': '2022-05-20T00:28:37.233000', 'bytes': 2086855680, 'norm_byte': 35180544, 'ops': 2037945, 'norm_ops': 34356, 'norm_ltcy': 34.967367190228785, 'iteration': 0}, labels={}, tag='results')
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: Run ID is {'NA'}
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: document size is: 240
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - run_snafu: {
+    "_index": "snafu-uperf-results",
+    "_op_type": "create",
+    "_source": {
+        "test_type": "rr",
+        "protocol": "tcp",
+        "message_size": 1024,
+        "read_message_size": 1024,
+        "num_threads": 1,
+        "duration": 60,
+        "kind": "pod",
+        "hostnetwork": "False",
+        "remote_ip": "11.10.1.241",
+        "client_ips": "10.131.1.221 11.10.1.201 ",
+        "service_ip": "False",
+        "service_type": "",
+        "port": "30000",
+        "client_node": "worker001-740xd",
+        "server_node": "unknown",
+        "num_pairs": "1",
+        "multus_client": "macvlan-range-0",
+        "networkpolicy": "False",
+        "density": "1",
+        "nodes_in_iter": "1",
+        "step_size": "",
+        "colocate": "",
+        "density_range": "",
+        "node_range": "",
+        "pod_id": null,
+        "uperf_ts": "2022-05-20T00:28:37.233000",
+        "timestamp": "2022-05-20T00:28:37.233000",
+        "bytes": 2086855680,
+        "norm_byte": 35180544,
+        "ops": 2037945,
+        "norm_ops": 34356,
+        "norm_ltcy": 34.967367190228785,
+        "iteration": 0,
+        "cluster_name": "test-cluster",
+        "user": "ripsaw",
+        "uuid": "34bacf5a-af10-58df-923c-3a1593744552",
+        "workload": "uperf",
+        "run_id": "NA"
+    },
+    "_id": "6f68503440b87f3a96773a0ebe77fde9af56b5c7faaa8b2453c39c8f09618f83",
+    "run_id": "NA"
+}
+2022-05-20T00:28:37Z - INFO     - MainProcess - uperf: --------------------------------------------------
+2022-05-20T00:28:37Z - INFO     - MainProcess - uperf: Summary result for sample : 0
+2022-05-20T00:28:37Z - INFO     - MainProcess - uperf: Average byte : 35370435.25423729
+2022-05-20T00:28:37Z - INFO     - MainProcess - uperf: Average ops : 34541.4406779661
+2022-05-20T00:28:37Z - INFO     - MainProcess - uperf: 95%ile Latency(ms) : 29.30901477477144
+2022-05-20T00:28:37Z - INFO     - MainProcess - uperf: --------------------------------------------------
+2022-05-20T00:28:37Z - DEBUG    - MainProcess - process: Collected sample 1 for command ['uperf', '-v', '-a', '-R', '-i', '1', '-m', '/tmp/uperf-test/uperf-rr-tcp-1024-1024-1', '-P', '30000']
+2022-05-20T00:28:37Z - INFO     - MainProcess - process: Finished collecting 1 sample for command ['uperf', '-v', '-a', '-R', '-i', '1', '-m', '/tmp/uperf-test/uperf-rr-tcp-1024-1024-1', '-P', '30000']
+2022-05-20T00:28:37Z - INFO     - MainProcess - uperf: Successfully collected 1 sample of Uperf.
+2022-05-20T00:28:37Z - INFO     - MainProcess - _benchmark: Cleaning up
+2022-05-20T00:28:37Z - INFO     - MainProcess - run_snafu: Duration of execution - 0:01:02, with total size of 14160 bytes
+1

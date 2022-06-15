@@ -1,0 +1,26 @@
+apiVersion: tuned.openshift.io/v1
+kind: Tuned
+metadata:
+  name: uperf
+  namespace: openshift-cluster-node-tuning-operator
+spec:
+  profile:
+  - data: |
+      [main]
+      summary=Experimental tuning for autotune experiment
+      
+      [sysctl]
+      vm.dirty_ratio=65
+      vm.dirty_background_ratio=85
+      vm.swappiness=95
+      net.core.busy_read=20
+      net.core.busy_poll=60
+      net.ipv4.tcp_fastopen=1
+      kernel.numa_balancing=0
+
+    name: uperf
+  recommend:
+  - match:
+    - label: uperf-sut
+    priority: 5
+    profile: uperf
